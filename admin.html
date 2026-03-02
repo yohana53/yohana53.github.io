@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yohana Fashion - Admin Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins, sans-serif;
+}
+
+body{
+display:flex;
+background:#f4f6f9;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:240px;
+height:100vh;
+background:linear-gradient(180deg,#000,#111);
+color:white;
+padding:20px;
+position:fixed;
+}
+
+.sidebar h2{
+text-align:center;
+margin-bottom:30px;
+color:#ff4d6d;
+}
+
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+transition:.3s;
+}
+
+.sidebar a:hover{
+background:#ff4d6d;
+}
+
+/* MAIN */
+
+.main{
+margin-left:240px;
+padding:30px;
+width:100%;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+margin-bottom:20px;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+/* FORM */
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+background:#ff4d6d;
+color:white;
+border:none;
+padding:12px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:black;
+}
+
+/* PRODUCT TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #eee;
+text-align:left;
+}
+
+.delete{
+background:red;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+color:white;
+}
+
+.stats{
+display:flex;
+gap:20px;
+}
+
+.stat{
+flex:1;
+background:linear-gradient(45deg,#ff4d6d,#ff758f);
+color:white;
+padding:20px;
+border-radius:12px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<h2>Yohana Fashion</h2>
+
+<a href="#">Dashboard</a>
+<a href="#">Products</a>
+<a href="#">Orders</a>
+<a href="#">Customers</a>
+<a href="#">Settings</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+<h1>Admin Dashboard</h1>
+
+<!-- STATS -->
+<div class="stats">
+<div class="stat">
+<h3 id="totalProducts">0</h3>
+<p>Total Products</p>
+</div>
+
+<div class="stat">
+<h3>Online</h3>
+<p>Store Status</p>
+</div>
+</div>
+
+<!-- ADD PRODUCT -->
+<div class="card">
+<h2>Add Product</h2>
+
+<input type="text" id="name" placeholder="Product Name">
+<input type="number" id="price" placeholder="Price ($)">
+<input type="text" id="image" placeholder="Image URL">
+
+<button onclick="addProduct()">Add Product</button>
+</div>
+
+<!-- PRODUCT LIST -->
+<div class="card">
+<h2>Products List</h2>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="productList"></tbody>
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+function saveProducts(){
+localStorage.setItem("products", JSON.stringify(products));
+}
+
+function addProduct(){
+
+let name=document.getElementById("name").value;
+let price=document.getElementById("price").value;
+let image=document.getElementById("image").value;
+
+if(name=="" || price==""){
+alert("Fill all fields");
+return;
+}
+
+products.push({name,price,image});
+
+saveProducts();
+renderProducts();
+
+document.getElementById("name").value="";
+document.getElementById("price").value="";
+document.getElementById("image").value="";
+}
+
+function deleteProduct(index){
+products.splice(index,1);
+saveProducts();
+renderProducts();
+}
+
+function renderProducts(){
+
+let list=document.getElementById("productList");
+list.innerHTML="";
+
+products.forEach((p,i)=>{
+
+list.innerHTML+=`
+<tr>
+<td>${p.name}</td>
+<td>$${p.price}</td>
+<td><span class="delete" onclick="deleteProduct(${i})">Delete</span></td>
+</tr>
+`;
+
+});
+
+document.getElementById("totalProducts").innerText=products.length;
+}
+
+renderProducts();
+
+</script>
+
+</body>
+</html>

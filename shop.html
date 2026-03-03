@@ -1,78 +1,141 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Shop - Yohana Fashion</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shop Fashion | Yohana Fashion Tanzania</title>
+
+  <meta name="description" content="Browse stylish jackets, dresses, sneakers and more at Yohana Fashion. Order directly via WhatsApp in Tanzania.">
+
+  <meta name="keywords" content="buy clothes Tanzania, shop fashion Dar es Salaam, jackets Tanzania, dresses Tanzania, sneakers Tanzania">
+
+  <meta name="author" content="Yohana Fashion">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 
 <body>
 
-<nav>
-<div class="logo">Yohana Fashion</div>
-<div>
-<a href="index.html">Home</a>
-<a href="shop.html">Shop</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</div>
-</nav>
+<header>
+  <div class="logo">Yohana Fashion</div>
 
-<section class="products">
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
-<h3>Elegant Dress</h3>
-<p>$25</p>
-<a href="https://wa.me/+255715029419" class="order-btn">
-<i class="fab fa-whatsapp"></i> Order on WhatsApp
-</a>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1520975922323-4d4b27c4e45b">
-<h3>Men Outfit</h3>
-<p>$30</p>
-<a href="https://wa.me/+255715029419" class="order-btn">
-<i class="fab fa-whatsapp"></i> Order on WhatsApp
-</a>
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c">
-<h3>Casual Wear</h3>
-<p>$20</p>
-<a href="https://wa.me/+255715029419" class="order-btn">
-<i class="fab fa-whatsapp"></i> Order on WhatsApp
-</a>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1520974735194-2b5b9c9b52aa">
-<h3>Luxury Jacket</h3>
-<p>$45</p>
-<a href="https://wa.me/+255715029419" class="order-btn">
-<i class="fab fa-whatsapp"></i> Order on WhatsApp
-</a>
-
-
+<!-- Banner -->
+<section class="banner">
+  <h2>✨ New Products Available! ✨</h2>
+  <p>Check out our latest arrivals and order directly via WhatsApp</p>
 </section>
 
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/+255715029419?text=Hello%20I%20want%20to%20order%20from%20Yohana%20Fashion"
-   class="whatsapp-float"
-   target="_blank">
+<!-- Shop -->
+<section class="shop">
+  <h1>Shop Our Products</h1>
+  <div class="product-grid" id="product-grid"></div>
+</section>
 
-   <i class="fab fa-whatsapp"></i>
-   <span>Order via WhatsApp</span>
+<script>
+const whatsappNumber = "255715029419";
 
+const products = [
+  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
+  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
+  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
+  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
+  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
+  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
+  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
+  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
+  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
+  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
+  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
+  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
+  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
+  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
+  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
+  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
+  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
+  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
+  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
+  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
+  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
+  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
+  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
+  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
+  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
+  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
+  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
+  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
+  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
+  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
+  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
+  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
+  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
+  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
+  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" }
+];
 
+const grid = document.getElementById("product-grid");
 
-<div class="product-grid">
-  <!-- Repeat this card for each product -->
-  <div class="product-card">
-    <img src="your-image.jpeg" alt="Elegant Dress">
-    <h3>Elegant Dress</h3>
-    <p class="price">$25</p>
-    <a href="https://wa.me" class="whatsapp-btn">Order on WhatsApp</a>
-  </div>
-</div>
+products.forEach(product => {
+  const card = document.createElement("div");
+  card.classList.add("product");
+
+  card.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>${product.price}</p>
+    <a href="https://wa.me/${whatsappNumber}?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}"
+       class="btn whatsapp-btn" target="_blank">
+       <i class="fab fa-whatsapp"></i> Order via WhatsApp
+    </a>
+  `;
+
+  grid.appendChild(card);
+});
+</script>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+</a>
+
+<footer>
+  <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
+</footer>
+
+<!-- Mobile Menu -->
+<script>
+const menuToggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('#navbar a');
+
+menuToggle.addEventListener('click', () => {
+  navbar.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navbar.classList.remove('active');
+  });
+});
+</script>
 
 </body>
 </html>

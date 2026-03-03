@@ -1,30 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Yohana Fashion | Trusted Fashion Store Tanzania</title>
+
+  <meta name="description" content="Learn about Yohana Fashion, a trusted fashion store in Dar es Salaam offering quality and trendy clothing.">
+
+  <meta name="keywords" content="about Yohana Fashion, fashion store Tanzania, trusted clothing shop Dar es Salaam">
+
+  <meta name="author" content="Yohana Fashion">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 
 <body>
 
-<nav>
-<div class="logo">Yohana Fashion</div>
-<div>
-<a href="index.html">Home</a>
-<a href="shop.html">Shop</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</div>
-</nav>
+<header>
+  <div class="logo">Yohana Fashion</div>
 
-<div style="padding:60px;text-align:center;">
-<h1>About Yohana Fashion</h1>
-<p>
-We provide stylish, affordable and modern fashion
-for everyone. Our mission is confidence through style.
-</p>
-</div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
 
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
+<section class="about-hero">
+  <img src="images/storebanner.jpg"
+       alt="Yohana Fashion Store Banner">
+</section>
+
+<section class="about">
+  <h1>About Yohana Fashion</h1>
+
+  <p>
+    At <strong>Yohana Fashion</strong>, we believe style is a reflection of personality.
+    We are dedicated to bringing high-quality, trendy clothing and accessories you can trust.
+  </p>
+
+  <p>
+    Our mission is simple: to make shopping enjoyable, easy, and reliable.
+    Every product is carefully selected to ensure quality, comfort, and confidence.
+    Your satisfaction is always our top priority.
+  </p>
+
+  <div class="team">
+    <div class="team-member">
+      <img src="images/founder.jpg"
+           alt="Founder">
+      <p>Yohana – Founder & Designer</p>
+    </div>
+
+    <div class="team-member">
+      <img src="images/support.jpg"
+           alt="Support">
+      <p>Fatima – Customer Support</p>
+    </div>
+
+    <div class="team-member">
+      <img src="images/manager.jpg"
+           alt="Manager">
+      <p>John – Store Manager</p>
+    </div>
+  </div>
+
+  <div class="our-promise">
+    <div class="promise-item">
+      <i class="fas fa-gem"></i>
+      <h3>Quality Products</h3>
+      <p>Carefully selected fashion pieces made to last.</p>
+    </div>
+
+    <div class="promise-item">
+      <i class="fas fa-truck"></i>
+      <h3>Fast Delivery</h3>
+      <p>Quick and reliable delivery across Tanzania.</p>
+    </div>
+
+    <div class="promise-item">
+      <i class="fas fa-headset"></i>
+      <h3>Trusted Support</h3>
+      <p>Friendly customer care always ready to help you.</p>
+    </div>
+  </div>
+
+  <a href="https://wa.me/255715029419"
+     target="_blank"
+     class="btn whatsapp-btn about-whatsapp">
+    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+  </a>
+
+</section>
+
+<a href="https://wa.me/255715029419"
+   target="_blank"
+   class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+</a>
+
+<footer>
+  <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
+</footer>
+
+<script>
+const menuToggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('#navbar a');
+
+menuToggle.addEventListener('click', () => {
+  navbar.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navbar.classList.remove('active');
+  });
+});
+</script>
 
 </body>
 </html>
+
+

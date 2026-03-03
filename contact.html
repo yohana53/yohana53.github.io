@@ -1,28 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact Yohana Fashion | Dar es Salaam Tanzania</title>
+
+  <meta name="description" content="Contact Yohana Fashion in Dar es Salaam, Tanzania. Call, email or chat with us on WhatsApp for fast support.">
+
+  <meta name="keywords" content="contact Yohana Fashion, Dar es Salaam clothing store, Tanzania fashion shop contact">
+
+  <meta name="author" content="Yohana Fashion">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 
 <body>
 
-<nav>
-<div class="logo">Yohana Fashion</div>
-<div>
-<a href="index.html">Home</a>
-<a href="shop.html">Shop</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</div>
-</nav>
+<header>
+  <div class="logo">Yohana Fashion</div>
 
-<div style="padding:50px;text-align:center;">
-<h2>Contact Us</h2>
-<p>WhatsApp: +255715029419</p>
-<p>Email: yohanafashion53@gmail.com</p>
-</div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
 
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
+<section class="contact">
+  <h1>Contact Us</h1>
+  <p>We’d love to hear from you! Reach us through any of the channels below:</p>
+
+  <div class="contact-info">
+
+    <div class="info-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <p>Location: Congo & Uhuru Street, Dar es Salaam, Tanzania</p>
+    </div>
+
+    <div class="info-item">
+      <i class="fas fa-phone"></i>
+      <p>Phone: <a href="tel:+255715029419">+255 715 029 419</a></p>
+    </div>
+
+    <div class="info-item">
+      <i class="fas fa-envelope"></i>
+      <p>Email: <a href="mailto:yohanafashion53@gmail.com">yohanafashion53@gmail.com</a></p>
+    </div>
+
+  </div>
+
+  <a href="https://wa.me/255715029419" target="_blank"
+     class="btn whatsapp-btn contact-whatsapp">
+    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+  </a>
+</section>
+
+<footer>
+  <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+</a>
+
+<script>
+const menuToggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('#navbar a');
+
+menuToggle.addEventListener('click', () => {
+  navbar.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navbar.classList.remove('active');
+  });
+});
+</script>
 
 </body>
 </html>
+
+

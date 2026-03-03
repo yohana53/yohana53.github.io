@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Collections | Men, Women, Kids Fashion Tanzania</title>
+
+  <meta name="description" content="Explore our collections for men, women, kids, shoes and accessories at Yohana Fashion in Dar es Salaam.">
+
+  <meta name="keywords" content="men fashion Tanzania, women fashion Tanzania, kids clothes Tanzania, shoes Tanzania">
+
+  <meta name="author" content="Yohana Fashion">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+
+<body>
+
+<header>
+  <div class="logo">Yohana Fashion</div>
+
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="collections">
+  <h1>Our Collections</h1>
+
+  <div class="carousel-container">
+    <h2>Men</h2>
+    <div class="carousel" id="carousel-Men"></div>
+  </div>
+
+  <div class="carousel-container">
+    <h2>Women</h2>
+    <div class="carousel" id="carousel-Women"></div>
+  </div>
+
+  <div class="carousel-container">
+    <h2>Kids</h2>
+    <div class="carousel" id="carousel-Kids"></div>
+  </div>
+
+  <div class="carousel-container">
+    <h2>Shoes</h2>
+    <div class="carousel" id="carousel-Shoes"></div>
+  </div>
+
+  <div class="carousel-container">
+    <h2>Other</h2>
+    <div class="carousel" id="carousel-Other"></div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
+</footer>
+
+<script>
+const whatsappNumber = "255715029419";
+
+const products = [
+  { name: "Men Jacket", price: "$49.99", image: "images/men1.jpg", category: "Men" },
+  { name: "Men Shirt", price: "$29.99", image: "images/men2.jpg", category: "Men" },
+  { name: "Women Dress", price: "$39.99", image: "images/women1.jpg", category: "Women" },
+  { name: "Women Top", price: "$24.99", image: "images/women2.jpg", category: "Women" },
+  { name: "Kids T-shirt", price: "$19.99", image: "images/kids1.jpg", category: "Kids" },
+  { name: "Kids Shorts", price: "$14.99", image: "images/kids2.jpg", category: "Kids" },
+  { name: "Sneakers", price: "$59.99", image: "images/shoes1.jpg", category: "Shoes" },
+  { name: "Sandals", price: "$34.99", image: "images/shoes2.jpg", category: "Shoes" },
+  { name: "Handbag", price: "$49.99", image: "images/other1.jpg", category: "Other" },
+  { name: "Belt", price: "$19.99", image: "images/other2.jpg", category: "Other" },
+   { name: "Men Jacket", price: "$49.99", image: "images/men1.jpg", category: "Men" },
+  { name: "Men Shirt", price: "$29.99", image: "images/men2.jpg", category: "Men" },
+  { name: "Women Dress", price: "$39.99", image: "images/women1.jpg", category: "Women" },
+  { name: "Women Top", price: "$24.99", image: "images/women2.jpg", category: "Women" },
+  { name: "Kids T-shirt", price: "$19.99", image: "images/kids1.jpg", category: "Kids" },
+  { name: "Kids Shorts", price: "$14.99", image: "images/kids2.jpg", category: "Kids" },
+  { name: "Sneakers", price: "$59.99", image: "images/shoes1.jpg", category: "Shoes" },
+  { name: "Sandals", price: "$34.99", image: "images/shoes2.jpg", category: "Shoes" },
+  { name: "Handbag", price: "$49.99", image: "images/other1.jpg", category: "Other" },
+  { name: "Belt", price: "$19.99", image: "images/other2.jpg", category: "Other" },
+   { name: "Men Jacket", price: "$49.99", image: "images/men1.jpg", category: "Men" },
+  { name: "Men Shirt", price: "$29.99", image: "images/men2.jpg", category: "Men" },
+  { name: "Women Dress", price: "$39.99", image: "images/women1.jpg", category: "Women" },
+  { name: "Women Top", price: "$24.99", image: "images/women2.jpg", category: "Women" },
+  { name: "Kids T-shirt", price: "$19.99", image: "images/kids1.jpg", category: "Kids" },
+  { name: "Kids Shorts", price: "$14.99", image: "images/kids2.jpg", category: "Kids" },
+  { name: "Sneakers", price: "$59.99", image: "images/shoes1.jpg", category: "Shoes" },
+  { name: "Sandals", price: "$34.99", image: "images/shoes2.jpg", category: "Shoes" },
+  { name: "Handbag", price: "$49.99", image: "images/other1.jpg", category: "Other" },
+  { name: "Belt", price: "$19.99", image: "images/other2.jpg", category: "Other" }
+];
+
+function loadCarousel(category) {
+  const carousel = document.getElementById(`carousel-${category}`);
+  const filtered = products.filter(p => p.category === category);
+
+  filtered.forEach(product => {
+    const card = document.createElement("div");
+    card.classList.add("product");
+
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.price}</p>
+      <a href="https://wa.me/${whatsappNumber}?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}"
+         class="btn whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Order via WhatsApp
+      </a>
+    `;
+
+    carousel.appendChild(card);
+  });
+}
+
+["Men","Women","Kids","Shoes","Other"].forEach(loadCarousel);
+</script>
+
+<a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+</a>
+
+<script>
+const menuToggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('#navbar a');
+
+menuToggle.addEventListener('click', () => {
+  navbar.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navbar.classList.remove('active');
+  });
+});
+</script>
+
+</body>
+</html>

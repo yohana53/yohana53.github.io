@@ -72,22 +72,32 @@ header nav ul li a:hover {
 
 /* ===== Product Grid ===== */
 .product-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  display: grid;
   gap: 20px;
-  padding: 20px 10px;
-  scroll-behavior: smooth;
+  padding: 20px;
 }
 
-.product-grid::-webkit-scrollbar {
-  height: 8px;
+/* 📱 Small phones */
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.product-grid::-webkit-scrollbar-thumb {
-  background-color: #ff4d6d;
-  border-radius: 4px;
+/* 📱 Large phones */
+@media (min-width: 481px) and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
+/* 💻 Desktop */
+@media (min-width: 769px) {
+  .product-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
 
 /* ===== Product Card ===== */
 .product {
@@ -936,6 +946,7 @@ nav ul li a:hover {
     color: #fff;
   }
 }
+
 
 
 

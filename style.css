@@ -948,6 +948,55 @@ nav ul li a:hover {
   }
 }
 
+/* ============================= */
+/* 📱 MOBILE STORE OPTIMIZATION */
+/* ============================= */
+
+@media (max-width: 480px) {
+
+  /* Product Card */
+  .product {
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  /* Product Title */
+  .product h3 {
+    font-size: 14px;
+    margin: 8px 0 4px;
+  }
+
+  /* Product Price */
+  .product p {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  /* WhatsApp Button */
+  .product .btn {
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  /* Reduce image height slightly */
+  .product img {
+    height: 140px;
+  }
+
+}
+
+.product {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+
 
 
 

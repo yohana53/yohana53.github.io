@@ -53,63 +53,74 @@
 <script>
 const whatsappNumber = "255715029419";
 
+/* ===== EXCHANGE RATE ===== */
+/* 1 USD ≈ 2500 TSh (change anytime) */
+const exchangeRate = 2500;
+
+/* ===== CURRENT CURRENCY ===== */
+let currentCurrency = "TSh";
+
+/* ===== PRODUCTS (KEEP PRICE AS NUMBER ONLY) ===== */
 const products = [
-  { name: "Stylish Jacket", price: "Tsh49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "Tsh59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "Tsh39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "Tsh19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "Tsh69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "Tsh24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "Tsh49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "Tsh59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "Tsh39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "Tsh19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "Tsh69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "Tsh24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "Tsh49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "Tsh59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "Tsh39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "Tsh19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "Tsh69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "Tsh24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "Tsh49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "Tsh59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "Tsh39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "Tsh19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "Tsh69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "Tsh24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "Tsh49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "Tsh59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "Tsh39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "Tsh19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "Tsh69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "Tsh24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "Tsh49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "Tsh59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "Tsh39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "Tsh19.99", image: "images/product4.jpg" },
-  { name: "Sunglasses", price: "Tsh24.99", image: "images/product6.jpg" }
+  { name: "Stylish Jacket", price: 50, image: "images/product1.jpg" },
+  { name: "Sneakers", price: 60, image: "images/product2.jpg" },
+  { name: "Casual Dress", price: 40, image: "images/product3.jpg" },
+  { name: "Summer Hat", price: 20, image: "images/product4.jpg" },
+  { name: "Leather Bag", price: 70, image: "images/product5.jpg" },
+  { name: "Sunglasses", price: 25, image: "images/product6.jpg" }
 ];
 
 const grid = document.getElementById("product-grid");
 
-products.forEach(product => {
-  const card = document.createElement("div");
-  card.classList.add("product");
+/* ===== FORMAT NUMBER ===== */
+function formatNumber(num) {
+  return num.toLocaleString();
+}
 
-  card.innerHTML = `
-    <img src="Tsh{product.image}" alt="Tsh{product.name}">
-    <h3>Tsh{product.name}</h3>
-    <p>Tsh{product.price}</p>
-    <a href="https://wa.me/Tsh{whatsappNumber}?text=Hi,%20I%20want%20to%20order%20Tsh{encodeURIComponent(product.name)}"
-       class="btn whatsapp-btn" target="_blank">
-       <i class="fab fa-whatsapp"></i> Order via WhatsApp
-    </a>
-  `;
+/* ===== CONVERT PRICE ===== */
+function getConvertedPrice(priceUSD) {
+  if (currentCurrency === "USD") {
+    return "$" + formatNumber(priceUSD);
+  } else {
+    return "TSh " + formatNumber(priceUSD * exchangeRate);
+  }
+}
 
-  grid.appendChild(card);
-});
+/* ===== RENDER PRODUCTS ===== */
+function renderProducts() {
+  grid.innerHTML = "";
+
+  products.forEach(product => {
+    const convertedPrice = getConvertedPrice(product.price);
+
+    const card = document.createElement("div");
+    card.classList.add("product");
+
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${convertedPrice}</p>
+      <a href="https://wa.me/${whatsappNumber}?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}"
+         class="btn whatsapp-btn" target="_blank">
+         <i class="fab fa-whatsapp"></i> Order via WhatsApp
+      </a>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+/* ===== CURRENCY SWITCH ===== */
+function toggleCurrency() {
+  currentCurrency = currentCurrency === "USD" ? "TSh" : "USD";
+  document.getElementById("currency-btn").innerText = currentCurrency;
+  renderProducts();
+}
+
+/* Initial render */
+renderProducts();
 </script>
+
 
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
@@ -139,4 +150,5 @@ navLinks.forEach(link => {
 
 </body>
 </html>
+
 

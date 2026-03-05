@@ -5,18 +5,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shop Fashion | Yohana Fashion Tanzania</title>
-
-<meta name="description" content="Browse stylish jackets, dresses, sneakers and more at Yohana Fashion. Order directly via WhatsApp in Tanzania.">
+<title>Shop | Yohana Fashion</title>
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* SEARCH + FILTER */
+
+.shop-controls{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+margin-bottom:20px;
+}
+
+.shop-controls input,
+.shop-controls select{
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+z-index:2000;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+}
+
+.modal-content{
+background:#fff;
+margin:5% auto;
+padding:20px;
+width:90%;
+max-width:500px;
+border-radius:10px;
+text-align:center;
+}
+
+.modal-content img{
+width:100%;
+border-radius:10px;
+cursor:zoom-in;
+}
+
+.close{
+float:right;
+font-size:28px;
+cursor:pointer;
+}
+
+/* CART */
+
+.cart{
+position:fixed;
+top:20px;
+right:20px;
+background:#fff;
+padding:10px 15px;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+font-weight:bold;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
 
 <div class="logo">Yohana Fashion</div>
@@ -36,18 +102,19 @@
 
 <ul class="dropdown-menu">
 
-<li><a href="men.html">Men</a></li>
-<li><a href="women.html">Women</a></li>
-<li><a href="kids.html">Kids</a></li>
-<li><a href="tshirts.html">T-Shirts</a></li>
-<li><a href="dresses.html">Dresses</a></li>
-<li><a href="trousers.html">Trousers</a></li>
-<li><a href="shoes.html">Shoes</a></li>
-<li><a href="bags.html">Bags</a></li>
-<li><a href="accessories.html">Accessories</a></li>
-<li><a href="others.html">Others</a></li>
+<li><a href="#">Men</a></li>
+<li><a href="#">Women</a></li>
+<li><a href="#">Kids</a></li>
+<li><a href="#">T-Shirts</a></li>
+<li><a href="#">Dresses</a></li>
+<li><a href="#">Trousers</a></li>
+<li><a href="#">Shoes</a></li>
+<li><a href="#">Bags</a></li>
+<li><a href="#">Accessories</a></li>
+<li><a href="#">Others</a></li>
 
 </ul>
+
 </li>
 
 <li><a href="about.html">About</a></li>
@@ -58,26 +125,39 @@
 
 </header>
 
-<!-- BANNER -->
-<section class="banner">
-<h2>✨ New Products Available! ✨</h2>
-<p>Check out our latest arrivals and order directly via WhatsApp</p>
-</section>
+<!-- CART -->
+<div class="cart">
+🛒 Cart: <span id="cart-count">0</span>
+</div>
 
-<!-- SHOP -->
 <section class="shop">
 
 <h1>Shop Our Products</h1>
 
-<!-- Currency Switch -->
-<button onclick="switchCurrency()" class="btn">Switch Currency</button>
+<div class="shop-controls">
+
+<input type="text" id="search" placeholder="Search product...">
+
+<select id="category">
+
+<option value="all">All Categories</option>
+<option value="Men">Men</option>
+<option value="Women">Women</option>
+<option value="Shoes">Shoes</option>
+<option value="Bags">Bags</option>
+<option value="Accessories">Accessories</option>
+
+</select>
+
+</div>
 
 <div class="product-grid" id="product-grid"></div>
 
 </section>
 
-<!-- PRODUCT POPUP -->
-<div id="productModal" class="modal">
+<!-- PRODUCT MODAL -->
+
+<div class="modal" id="productModal">
 
 <div class="modal-content">
 
@@ -89,8 +169,10 @@
 
 <p id="modalPrice"></p>
 
+<button id="addCart" class="btn">Add to Cart</button>
+
 <a id="modalWhatsapp" class="btn whatsapp-btn" target="_blank">
-<i class="fab fa-whatsapp"></i> Order on WhatsApp
+<i class="fab fa-whatsapp"></i> Order via WhatsApp
 </a>
 
 </div>
@@ -99,48 +181,31 @@
 
 <script>
 
-const whatsappNumber = "255715029419"
+const whatsappNumber="255715029419"
 
-let currency = "USD"
+let cart=0
 
-const rate = 2500
+const products=[
 
-const products = [
-
-{ name:"Stylish Jacket", price:49.99, image:"images/product1.jpg" },
-{ name:"Sneakers", price:59.99, image:"images/product2.jpg" },
-{ name:"Casual Dress", price:39.99, image:"images/product3.jpg" },
-{ name:"Summer Hat", price:19.99, image:"images/product4.jpg" },
-{ name:"Leather Bag", price:69.99, image:"images/product5.jpg" },
-{ name:"Sunglasses", price:24.99, image:"images/product6.jpg" },
+{name:"Men Jacket",price:49000,image:"images/product1.jpg",category:"Men"},
+{name:"Sneakers",price:59000,image:"images/product2.jpg",category:"Shoes"},
+{name:"Women Dress",price:39000,image:"images/product3.jpg",category:"Women"},
+{name:"Handbag",price:45000,image:"images/product4.jpg",category:"Bags"},
+{name:"Cap",price:15000,image:"images/product5.jpg",category:"Accessories"},
+{name:"Sport Shoes",price:52000,image:"images/product6.jpg",category:"Shoes"}
 
 ]
 
-const grid = document.getElementById("product-grid")
+const grid=document.getElementById("product-grid")
 
-function formatNumber(num){
-return num.toLocaleString()
-}
-
-function convertPrice(price){
-
-if(currency==="USD"){
-return "$"+price
-}
-
-let tsh = price*rate
-
-return "TSh "+formatNumber(Math.round(tsh))
-
-}
-
-function renderProducts(){
+function renderProducts(list){
 
 grid.innerHTML=""
 
-products.forEach(product=>{
+list.forEach(product=>{
 
 const card=document.createElement("div")
+
 card.classList.add("product")
 
 card.innerHTML=`
@@ -149,9 +214,9 @@ card.innerHTML=`
 
 <h3>${product.name}</h3>
 
-<p>${convertPrice(product.price)}</p>
+<p>TSh ${product.price.toLocaleString()}</p>
 
-<button class="btn view-btn">View Details</button>
+<button class="btn view-btn">View</button>
 
 `
 
@@ -163,59 +228,99 @@ card.querySelector(".view-btn").onclick=()=>openModal(product)
 
 }
 
-function switchCurrency(){
+renderProducts(products)
 
-currency = currency==="USD" ? "TSh" : "USD"
+/* SEARCH */
 
-renderProducts()
+document.getElementById("search").addEventListener("input",filterProducts)
+
+document.getElementById("category").addEventListener("change",filterProducts)
+
+function filterProducts(){
+
+const search=document.getElementById("search").value.toLowerCase()
+
+const category=document.getElementById("category").value
+
+const filtered=products.filter(p=>{
+
+return(
+p.name.toLowerCase().includes(search)&&
+(category==="all"||p.category===category)
+)
+
+})
+
+renderProducts(filtered)
 
 }
 
-renderProducts()
-
-/* PRODUCT MODAL */
+/* MODAL */
 
 const modal=document.getElementById("productModal")
+
 const modalImg=document.getElementById("modalImg")
+
 const modalTitle=document.getElementById("modalTitle")
+
 const modalPrice=document.getElementById("modalPrice")
+
 const modalWhatsapp=document.getElementById("modalWhatsapp")
 
+let currentProduct=null
+
 function openModal(product){
+
+currentProduct=product
 
 modal.style.display="block"
 
 modalImg.src=product.image
+
 modalTitle.textContent=product.name
-modalPrice.textContent=convertPrice(product.price)
+
+modalPrice.textContent="TSh "+product.price.toLocaleString()
 
 modalWhatsapp.href=
 `https://wa.me/${whatsappNumber}?text=Hi I want to order ${encodeURIComponent(product.name)}`
 
 }
 
-document.querySelector(".close").onclick=()=>{
-modal.style.display="none"
+document.querySelector(".close").onclick=()=>modal.style.display="none"
+
+window.onclick=(e)=>{if(e.target==modal)modal.style.display="none"}
+
+/* ZOOM IMAGE */
+
+modalImg.onclick=()=>{
+
+if(modalImg.style.transform==="scale(2)"){
+modalImg.style.transform="scale(1)"
+}else{
+modalImg.style.transform="scale(2)"
 }
 
-window.onclick=(e)=>{
-if(e.target==modal){
-modal.style.display="none"
 }
+
+/* CART */
+
+document.getElementById("addCart").onclick=()=>{
+
+cart++
+
+document.getElementById("cart-count").textContent=cart
+
 }
 
 /* MOBILE MENU */
 
 const menuToggle=document.getElementById("menu-toggle")
+
 const navbar=document.getElementById("navbar")
 
-menuToggle.onclick=()=>{
-navbar.classList.toggle("active")
-}
+menuToggle.onclick=()=>navbar.classList.toggle("active")
 
 </script>
-
-<!-- FLOATING WHATSAPP -->
 
 <a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
 <i class="fab fa-whatsapp"></i>
@@ -223,7 +328,7 @@ navbar.classList.toggle("active")
 
 <footer>
 
-<p>© 2026 Yohana Fashion. All Rights Reserved.</p>
+<p>© 2026 Yohana Fashion</p>
 
 </footer>
 

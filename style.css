@@ -1,274 +1,58 @@
-/* =========================
-   RESET
-========================= */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
 
-/* =========================
-   BODY
-========================= */
 body{
-font-family:Arial,sans-serif;
+font-family:Arial;
 background:#fff;
 color:#333;
-line-height:1.6;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
+
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
 background:#ff4d6d;
 padding:15px 30px;
-position:sticky;
-top:0;
-z-index:1000;
+color:white;
 }
 
 .logo{
-color:#fff;
 font-size:22px;
 font-weight:bold;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
 nav ul{
+display:flex;
 list-style:none;
-display:flex;
-gap:25px;
-align-items:center;
+gap:20px;
 }
 
-nav ul li{
-position:relative;
-}
-
-nav ul li a{
-color:#fff;
+nav a{
+color:white;
 text-decoration:none;
-font-weight:600;
-transition:.3s;
-}
-
-nav ul li a:hover{
-color:#25D366;
-}
-
-/* =========================
-   DROPDOWN MENU
-========================= */
-
-.dropdown-menu{
-position:absolute;
-top:40px;
-left:0;
-background:#fff;
-width:180px;
-border-radius:8px;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
-display:none;
-flex-direction:column;
-overflow:hidden;
-}
-
-.dropdown-menu li{
-list-style:none;
-}
-
-.dropdown-menu li a{
-display:block;
-padding:12px;
-color:#333;
-}
-
-.dropdown-menu li a:hover{
-background:#ff4d6d;
-color:#fff;
-}
-
-.dropdown:hover .dropdown-menu{
-display:block;
-}
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-.menu-toggle{
-display:none;
-font-size:26px;
-color:#fff;
-cursor:pointer;
-}
-
-@media(max-width:768px){
-
-.menu-toggle{
-display:block;
-}
-
-#navbar{
-position:absolute;
-top:70px;
-right:20px;
-width:220px;
-background:#111;
-border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
-
-opacity:0;
-transform:translateY(-10px);
-pointer-events:none;
-transition:.3s;
-}
-
-#navbar.active{
-opacity:1;
-transform:translateY(0);
-pointer-events:auto;
-}
-
-#navbar ul{
-flex-direction:column;
-padding:15px;
-}
-
-#navbar ul li{
-border-bottom:1px solid rgba(255,255,255,.1);
-}
-
-#navbar ul li:last-child{
-border-bottom:none;
-}
-
-#navbar ul li a{
-display:block;
-padding:12px;
-color:#fff;
-}
-
-#navbar ul li a:hover{
-background:#25D366;
-border-radius:6px;
-color:#fff;
-}
-
-/* dropdown mobile */
-
-.dropdown-menu{
-position:static;
-width:100%;
-background:#222;
-box-shadow:none;
-display:block;
-}
-
-.dropdown-menu li a{
-color:#fff;
-}
-
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-display:flex;
-flex-wrap:wrap;
-align-items:center;
-justify-content:center;
-padding:50px 20px;
-background:#ffe6eb;
-gap:30px;
-}
-
-.hero-content{
-max-width:500px;
-text-align:center;
-}
-
-.hero h1{
-font-size:36px;
-margin-bottom:10px;
-}
-
-.hero p{
-font-size:18px;
-margin-bottom:20px;
-}
-
-.hero-buttons{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
-justify-content:center;
-}
-
-.hero-img{
-max-width:500px;
-width:100%;
-border-radius:10px;
-}
-
-@media(max-width:768px){
-.hero{
-flex-direction:column;
-}
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.btn{
-display:inline-block;
-padding:10px 20px;
-background:#ff4d6d;
-color:#fff;
-text-decoration:none;
-border-radius:5px;
 font-weight:bold;
-transition:.3s;
 }
 
-.btn:hover{
-background:#e03c5f;
-transform:scale(1.05);
-}
-
-/* =========================
-   SHOP
-========================= */
+/* SHOP */
 
 .shop{
+padding:40px 20px;
 text-align:center;
-padding:50px 20px;
 }
-
-.shop h1{
-font-size:28px;
-margin-bottom:30px;
-}
-
-/* PRODUCT GRID */
 
 .product-grid{
 display:grid;
-grid-template-columns:repeat(5,1fr);
+grid-template-columns:repeat(4,1fr);
 gap:20px;
 padding:20px;
 }
 
-/* Tablet */
+/* TABLET */
 
 @media(max-width:900px){
 .product-grid{
@@ -276,24 +60,20 @@ grid-template-columns:repeat(3,1fr);
 }
 }
 
-/* Phone */
+/* PHONE */
 
-@media(max-width:500px){
+@media(max-width:480px){
 .product-grid{
 grid-template-columns:repeat(2,1fr);
 }
 }
 
-/* PRODUCT CARD */
-
 .product{
 border:1px solid #ddd;
-border-radius:12px;
+border-radius:10px;
 padding:15px;
-background:#fff;
+background:white;
 text-align:center;
-transition:.3s;
-animation:fadeUp .6s ease forwards;
 }
 
 .product img{
@@ -305,175 +85,84 @@ margin-bottom:10px;
 }
 
 .product h3{
-font-size:18px;
+font-size:16px;
 margin-bottom:5px;
 }
 
 .product p{
 font-weight:bold;
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
-.product:hover{
-transform:translateY(-8px);
-box-shadow:0 8px 20px rgba(0,0,0,.15);
+.rating{
+color:gold;
+margin-bottom:8px;
 }
 
-/* =========================
-   WHATSAPP BUTTON
-========================= */
-
-.whatsapp-btn{
-background:#25D366;
-color:#fff;
-display:inline-flex;
-align-items:center;
-gap:8px;
+.btn{
+display:inline-block;
 padding:8px 12px;
-border-radius:6px;
+background:#ff4d6d;
+color:white;
 text-decoration:none;
-font-weight:bold;
+border-radius:5px;
+cursor:pointer;
+border:none;
 }
 
-.whatsapp-btn:hover{
-background:#1ebe5d;
+.btn:hover{
+background:#e03c5f;
 }
 
-/* floating */
+/* MODAL */
 
-.whatsapp-float{
+.modal{
+display:none;
 position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:12px 18px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 4px 10px rgba(0,0,0,.2);
-transition:.3s;
-}
-
-.whatsapp-float:hover{
-transform:scale(1.05);
-background:#1ebe5d;
-}
-
-/* =========================
-   ABOUT PAGE
-========================= */
-
-.about{
-text-align:center;
-padding:50px 20px;
-max-width:900px;
-margin:auto;
-}
-
-.about h1{
-font-size:32px;
-color:#ff4d6d;
-margin-bottom:25px;
-}
-
-.about p{
-font-size:18px;
-margin-bottom:20px;
-line-height:1.8;
-}
-
-.team{
-display:flex;
-flex-wrap:wrap;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
 justify-content:center;
-gap:30px;
-margin:40px 0;
+align-items:center;
 }
 
-.team-member{
+.modal-content{
+background:white;
+padding:20px;
+border-radius:10px;
+max-width:400px;
 text-align:center;
-max-width:200px;
 }
 
-.team-member img{
+.modal-content img{
 width:100%;
 border-radius:10px;
 margin-bottom:10px;
 }
 
-.our-promise{
+/* CART */
+
+.cart-container{
+max-width:800px;
+margin:auto;
+padding:40px 20px;
+}
+
+.cart-item{
 display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-margin:40px 0;
-}
-
-.promise-item{
-background:#ffe6eb;
-padding:20px;
-border-radius:10px;
-max-width:250px;
-text-align:center;
-}
-
-/* =========================
-   CONTACT PAGE
-========================= */
-
-.contact{
-text-align:center;
-padding:50px 20px;
-}
-
-.contact h1{
-font-size:32px;
-margin-bottom:20px;
-}
-
-.contact p{
-font-size:18px;
-margin-bottom:30px;
-}
-
-.contact-info{
-display:flex;
-flex-direction:column;
+gap:15px;
 align-items:center;
-gap:20px;
+border-bottom:1px solid #ddd;
+padding:15px 0;
 }
 
-.info-item{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:18px;
+.cart-item img{
+width:70px;
+border-radius:8px;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-text-align:center;
-padding:20px;
-background:#ff4d6d;
-color:#fff;
-margin-top:40px;
-}
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+.whatsapp-btn{
+background:#25D366;
 }

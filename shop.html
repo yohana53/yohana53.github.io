@@ -1,83 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Shop | Yohana Fashion</title>
 
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-
-/* SEARCH + FILTER */
-
-.shop-controls{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-justify-content:center;
-margin-bottom:20px;
-}
-
-.shop-controls input,
-.shop-controls select{
-padding:10px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-/* MODAL */
-
-.modal{
-display:none;
-position:fixed;
-z-index:2000;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-}
-
-.modal-content{
-background:#fff;
-margin:5% auto;
-padding:20px;
-width:90%;
-max-width:500px;
-border-radius:10px;
-text-align:center;
-}
-
-.modal-content img{
-width:100%;
-border-radius:10px;
-cursor:zoom-in;
-}
-
-.close{
-float:right;
-font-size:28px;
-cursor:pointer;
-}
-
-/* CART */
-
-.cart{
-position:fixed;
-top:20px;
-right:20px;
-background:#fff;
-padding:10px 15px;
-border-radius:8px;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
-font-weight:bold;
-}
-
-</style>
 
 </head>
 
@@ -87,322 +17,153 @@ font-weight:bold;
 
 <div class="logo">Yohana Fashion</div>
 
-<div class="menu-toggle" id="menu-toggle">
-<i class="fas fa-bars"></i>
-</div>
-
-<nav id="navbar">
+<nav>
 <ul>
-
 <li><a href="index.html">Home</a></li>
 <li><a href="shop.html">Shop</a></li>
-
-<li class="dropdown">
-<a href="#">Collections ▾</a>
-
-<ul class="dropdown-menu">
-
-<li><a href="#">Men</a></li>
-<li><a href="#">Women</a></li>
-<li><a href="#">Kids</a></li>
-<li><a href="#">T-Shirts</a></li>
-<li><a href="#">Dresses</a></li>
-<li><a href="#">Trousers</a></li>
-<li><a href="#">Shoes</a></li>
-<li><a href="#">Bags</a></li>
-<li><a href="#">Accessories</a></li>
-<li><a href="#">Others</a></li>
-
-</ul>
-
-</li>
-
-<li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
-
+<li><a href="cart.html">Cart</a></li>
 </ul>
 </nav>
 
 </header>
 
-<!-- CART -->
-<div class="cart">
-🛒 Cart: <span id="cart-count">0</span>
-</div>
-
 <section class="shop">
 
 <h1>Shop Our Products</h1>
 
-<div class="shop-controls">
-
-<input type="text" id="search" placeholder="Search product...">
-
-<select id="category">
-
-<option value="all">All Categories</option>
-<option value="Men">Men</option>
-<option value="Women">Women</option>
-<option value="Shoes">Shoes</option>
-<option value="Bags">Bags</option>
-<option value="Accessories">Accessories</option>
-
-</select>
-
-</div>
-
-<div class="product-grid" id="product-grid"></div>
+<div class="product-grid" id="grid"></div>
 
 </section>
 
-<!-- PRODUCT MODAL -->
+<!-- MODAL -->
 
-<div class="modal" id="productModal">
+<div class="modal" id="modal">
 
 <div class="modal-content">
 
-<span class="close">&times;</span>
-
 <img id="modalImg">
 
-<h2 id="modalTitle"></h2>
+<h3 id="modalName"></h3>
 
 <p id="modalPrice"></p>
 
-<button id="addCart" class="btn">Add to Cart</button>
+<div id="modalRating"></div>
 
-<a id="modalWhatsapp" class="btn whatsapp-btn" target="_blank">
-<i class="fab fa-whatsapp"></i> Order via WhatsApp
-</a>
+<button class="btn" id="addCartBtn">Add to Cart</button>
 
 </div>
 
 </div>
-<button onclick="prevImage()">◀</button>
-<button onclick="nextImage()">▶</button>
 
-  
 <script>
 
-const whatsappNumber="255715029419"
+const grid=document.getElementById("grid")
 
-let cart=0
+const modal=document.getElementById("modal")
+
+const modalImg=document.getElementById("modalImg")
+
+const modalName=document.getElementById("modalName")
+
+const modalPrice=document.getElementById("modalPrice")
+
+const modalRating=document.getElementById("modalRating")
+
+let selectedProduct=null
 
 const products=[
 
 {
 name:"Men Jacket",
 price:49000,
-category:"Men",
 rating:5,
-images:[
-"images/product1.jpg",
-"images/product1b.jpg",
-"images/product1c.jpg"
-]
+images:["images/product1.jpg","images/product1b.jpg"]
 },
 
 {
 name:"Sneakers",
 price:59000,
-category:"Shoes",
 rating:4,
-images:[
-"images/product2.jpg",
-"images/product2b.jpg"
-]
+images:["images/product2.jpg"]
 },
 
 {
-name:"Women Dress",
+name:"Dress",
 price:39000,
-category:"Women",
 rating:5,
-images:[
-"images/product3.jpg"
-]
+images:["images/product3.jpg"]
+},
+
+{
+name:"Hat",
+price:19000,
+rating:3,
+images:["images/product4.jpg"]
 }
 
 ]
 
-
-const grid=document.getElementById("product-grid")
-
-function renderProducts(list){
-
-grid.innerHTML=""
-
-list.forEach(product=>{
+products.forEach(p=>{
 
 const card=document.createElement("div")
 
-card.classList.add("product")
+card.className="product"
 
-card.innerHTML = `
+card.innerHTML=`
 
-<img src="${product.images[0]}">
+<img src="${p.images[0]}">
 
-<h3>${product.name}</h3>
+<h3>${p.name}</h3>
 
-<p>TSh ${product.price.toLocaleString()}</p>
+<p>TSh ${p.price.toLocaleString()}</p>
 
-<div class="rating">
-${"⭐".repeat(product.rating)}
-</div>
+<div class="rating">${"⭐".repeat(p.rating)}</div>
 
-<button class="btn view-btn">View</button>
-
-<button class="btn add-cart">Add to Cart</button>
+<button class="btn">View</button>
 
 `
 
-`
+card.querySelector("button").onclick=()=>{
+
+selectedProduct=p
+
+modal.style.display="flex"
+
+modalImg.src=p.images[0]
+
+modalName.textContent=p.name
+
+modalPrice.textContent="TSh "+p.price.toLocaleString()
+
+modalRating.textContent="⭐".repeat(p.rating)
+
+}
 
 grid.appendChild(card)
 
-card.querySelector(".view-btn").onclick=()=>openModal(product)
-
 })
 
+modal.onclick=(e)=>{
+if(e.target===modal) modal.style.display="none"
 }
 
-renderProducts(products)
+document.getElementById("addCartBtn").onclick=()=>{
 
-/* SEARCH */
+let cart=JSON.parse(localStorage.getItem("cart"))||[]
 
-document.getElementById("search").addEventListener("input",filterProducts)
-
-document.getElementById("category").addEventListener("change",filterProducts)
-
-function filterProducts(){
-
-const search=document.getElementById("search").value.toLowerCase()
-
-const category=document.getElementById("category").value
-
-const filtered=products.filter(p=>{
-
-return(
-p.name.toLowerCase().includes(search)&&
-(category==="all"||p.category===category)
-)
-
+cart.push({
+name:selectedProduct.name,
+price:selectedProduct.price,
+image:selectedProduct.images[0]
 })
 
-renderProducts(filtered)
+localStorage.setItem("cart",JSON.stringify(cart))
+
+alert("Added to cart")
 
 }
-
-/* MODAL */
-
-const modal=document.getElementById("productModal")
-
-const modalImg=document.getElementById("modalImg")
-
-const modalTitle=document.getElementById("modalTitle")
-
-const modalPrice=document.getElementById("modalPrice")
-
-const modalWhatsapp=document.getElementById("modalWhatsapp")
-
-let currentProduct=null
-
-function openModal(product){
-
-currentProduct=product
-
-modal.style.display="block"
-
-let currentImage=0
-
-function showImage(product){
-
-modalImg.src = product.images[currentImage]
-
-}
-
-
-modalTitle.textContent=product.name
-
-modalPrice.textContent="TSh "+product.price.toLocaleString()
-
-modalWhatsapp.href=
-`https://wa.me/${whatsappNumber}?text=Hi I want to order ${encodeURIComponent(product.name)}`
-
-}
-
-document.querySelector(".close").onclick=()=>modal.style.display="none"
-
-window.onclick=(e)=>{if(e.target==modal)modal.style.display="none"}
-
-  function nextImage(){
-
-currentImage++
-
-if(currentImage>=currentProduct.images.length){
-currentImage=0
-}
-
-showImage(currentProduct)
-
-}
-
-function prevImage(){
-
-currentImage--
-
-if(currentImage<0){
-currentImage=currentProduct.images.length-1
-}
-
-showImage(currentProduct)
-
-}
-
-
-/* ZOOM IMAGE */
-
-modalImg.onclick=()=>{
-
-if(modalImg.style.transform==="scale(2)"){
-modalImg.style.transform="scale(1)"
-}else{
-modalImg.style.transform="scale(2)"
-}
-
-}
-
-/* CART */
-
-document.getElementById("addCart").onclick=()=>{
-
-cart++
-
-document.getElementById("cart-count").textContent=cart
-
-}
-
-/* MOBILE MENU */
-
-const menuToggle=document.getElementById("menu-toggle")
-
-const navbar=document.getElementById("navbar")
-
-menuToggle.onclick=()=>navbar.classList.toggle("active")
-  
 
 </script>
 
-<a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<footer>
-
-<p>© 2026 Yohana Fashion</p>
-
-</footer>
-
 </body>
 </html>
-

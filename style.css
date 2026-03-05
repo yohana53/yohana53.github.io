@@ -1,158 +1,92 @@
 /* =========================
    RESET
 ========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 /* =========================
    BODY
 ========================= */
-body {
-  font-family: Arial, sans-serif;
-  background: #fff;
-  color: #333;
-  line-height: 1.6;
+body{
+font-family:Arial,sans-serif;
+background:#fff;
+color:#333;
+line-height:1.6;
 }
 
 /* =========================
-   HEADER / NAVBAR
+   HEADER
 ========================= */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ff4d6d;
-  padding: 15px 30px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#ff4d6d;
+padding:15px 30px;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
-.logo {
-  color: #fff;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-nav ul li a:hover {
-  color: #25D366;
-}
-
-/* Hamburger */
-.menu-toggle {
-  display: none;
-  font-size: 26px;
-  color: #fff;
-  cursor: pointer;
+.logo{
+color:#fff;
+font-size:22px;
+font-weight:bold;
 }
 
 /* =========================
-   MOBILE NAVIGATION
+   NAVIGATION
 ========================= */
-@media (max-width: 768px) {
-
-  .menu-toggle {
-    display: block;
-  }
-
-  #navbar {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    width: 220px;
-    background: #111;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    transition: 0.3s ease;
-  }
-
-  #navbar.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  #navbar ul {
-    flex-direction: column;
-    padding: 15px;
-  }
-
-  #navbar ul li {
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  #navbar ul li:last-child {
-    border-bottom: none;
-  }
-
-  #navbar ul li a {
-    display: block;
-    padding: 12px;
-    color: #fff;
-  }
-
-  #navbar ul li a:hover {
-    background: #25D366;
-    border-radius: 6px;
-    color: #fff;
-  }
+nav ul{
+list-style:none;
+display:flex;
+gap:25px;
+align-items:center;
 }
+
+nav ul li{
+position:relative;
+}
+
+nav ul li a{
+color:#fff;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#25D366;
+}
+
 /* =========================
    DROPDOWN MENU
 ========================= */
 
-.dropdown{
-position: relative;
-}
-
 .dropdown-menu{
-display: none;
-position: absolute;
-top: 40px;
-left: 0;
-background: #fff;
-min-width: 180px;
-border-radius: 8px;
-box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-list-style: none;
-padding: 10px 0;
-z-index: 999;
+position:absolute;
+top:40px;
+left:0;
+background:#fff;
+width:180px;
+border-radius:8px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+display:none;
+flex-direction:column;
+overflow:hidden;
 }
 
 .dropdown-menu li{
-border-bottom: 1px solid #eee;
-}
-
-.dropdown-menu li:last-child{
-border-bottom:none;
+list-style:none;
 }
 
 .dropdown-menu li a{
 display:block;
-padding:10px 15px;
+padding:12px;
 color:#333;
-text-decoration:none;
-font-weight:500;
 }
 
 .dropdown-menu li a:hover{
@@ -160,120 +94,81 @@ background:#ff4d6d;
 color:#fff;
 }
 
-/* show dropdown */
-
 .dropdown:hover .dropdown-menu{
 display:block;
 }
 
-
-
 /* =========================
-   HERO SECTION
+   MOBILE MENU
 ========================= */
-.hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 20px;
-  background: #ffe6eb;
-  gap: 30px;
-}
 
-.hero-content {
-  max-width: 500px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
-
-.hero-img {
-  max-width: 500px;
-  width: 100%;
-  border-radius: 10px;
+.menu-toggle{
+display:none;
+font-size:26px;
+color:#fff;
+cursor:pointer;
 }
 
 @media(max-width:768px){
-  .hero {
-    flex-direction: column;
-  }
+
+.menu-toggle{
+display:block;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #ff4d6d;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: 0.3s;
+#navbar{
+position:absolute;
+top:70px;
+right:20px;
+width:220px;
+background:#111;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+
+opacity:0;
+transform:translateY(-10px);
+pointer-events:none;
+transition:.3s;
 }
 
-.btn:hover {
-  background: #e03c5f;
-  transform: scale(1.05);
+#navbar.active{
+opacity:1;
+transform:translateY(0);
+pointer-events:auto;
 }
 
-/* =========================
-   PRODUCT SECTION
-========================= */
-.products {
-  text-align: center;
-  padding: 50px 20px;
+#navbar ul{
+flex-direction:column;
+padding:15px;
 }
 
-.products h2 {
-  font-size: 28px;
-  margin-bottom: 30px;
+#navbar ul li{
+border-bottom:1px solid rgba(255,255,255,.1);
 }
 
-/* ✅ FINAL GRID SYSTEM */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  padding: 20px;
+#navbar ul li:last-child{
+border-bottom:none;
 }
 
-/* Tablet */
-@media (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+#navbar ul li a{
+display:block;
+padding:12px;
+color:#fff;
 }
 
-/* Mobile */
-@media (max-width: 480px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+#navbar ul li a:hover{
+background:#25D366;
+border-radius:6px;
+color:#fff;
 }
-@media (max-width:768px){
+
+/* dropdown mobile */
 
 .dropdown-menu{
 position:static;
+width:100%;
+background:#222;
 box-shadow:none;
-background:#111;
+display:block;
 }
 
 .dropdown-menu li a{
@@ -282,268 +177,303 @@ color:#fff;
 
 }
 
+/* =========================
+   HERO
+========================= */
 
-/* Product Card */
-.product {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 15px;
-  background: #fff;
-  text-align: center;
-  transition: 0.3s;
+.hero{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:center;
+padding:50px 20px;
+background:#ffe6eb;
+gap:30px;
 }
 
-.product img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
+.hero-content{
+max-width:500px;
+text-align:center;
 }
 
-.product h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
+.hero h1{
+font-size:36px;
+margin-bottom:10px;
 }
 
-.product p {
-  font-weight: bold;
-  margin-bottom: 10px;
+.hero p{
+font-size:18px;
+margin-bottom:20px;
 }
 
-.product:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.hero-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+justify-content:center;
+}
+
+.hero-img{
+max-width:500px;
+width:100%;
+border-radius:10px;
+}
+
+@media(max-width:768px){
+.hero{
+flex-direction:column;
+}
 }
 
 /* =========================
-   WHATSAPP BUTTONS
+   BUTTONS
 ========================= */
-.whatsapp-btn {
-  background: #25D366;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
+
+.btn{
+display:inline-block;
+padding:10px 20px;
+background:#ff4d6d;
+color:#fff;
+text-decoration:none;
+border-radius:5px;
+font-weight:bold;
+transition:.3s;
 }
 
-.whatsapp-btn:hover {
-  background: #1ebe5d;
+.btn:hover{
+background:#e03c5f;
+transform:scale(1.05);
 }
 
-/* Floating WhatsApp */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: 0.3s;
+/* =========================
+   SHOP
+========================= */
+
+.shop{
+text-align:center;
+padding:50px 20px;
 }
 
-.whatsapp-float:hover {
-  transform: scale(1.05);
-  background: #1ebe5d;
+.shop h1{
+font-size:28px;
+margin-bottom:30px;
+}
+
+/* PRODUCT GRID */
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:20px;
+padding:20px;
+}
+
+/* Tablet */
+
+@media(max-width:900px){
+.product-grid{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
+/* Phone */
+
+@media(max-width:500px){
+.product-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+/* PRODUCT CARD */
+
+.product{
+border:1px solid #ddd;
+border-radius:12px;
+padding:15px;
+background:#fff;
+text-align:center;
+transition:.3s;
+animation:fadeUp .6s ease forwards;
+}
+
+.product img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.product h3{
+font-size:18px;
+margin-bottom:5px;
+}
+
+.product p{
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.product:hover{
+transform:translateY(-8px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* =========================
+   WHATSAPP BUTTON
+========================= */
+
+.whatsapp-btn{
+background:#25D366;
+color:#fff;
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:8px 12px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.whatsapp-btn:hover{
+background:#1ebe5d;
+}
+
+/* floating */
+
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+padding:12px 18px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+transition:.3s;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.05);
+background:#1ebe5d;
+}
+
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about{
+text-align:center;
+padding:50px 20px;
+max-width:900px;
+margin:auto;
+}
+
+.about h1{
+font-size:32px;
+color:#ff4d6d;
+margin-bottom:25px;
+}
+
+.about p{
+font-size:18px;
+margin-bottom:20px;
+line-height:1.8;
+}
+
+.team{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+margin:40px 0;
+}
+
+.team-member{
+text-align:center;
+max-width:200px;
+}
+
+.team-member img{
+width:100%;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.our-promise{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+margin:40px 0;
+}
+
+.promise-item{
+background:#ffe6eb;
+padding:20px;
+border-radius:10px;
+max-width:250px;
+text-align:center;
+}
+
+/* =========================
+   CONTACT PAGE
+========================= */
+
+.contact{
+text-align:center;
+padding:50px 20px;
+}
+
+.contact h1{
+font-size:32px;
+margin-bottom:20px;
+}
+
+.contact p{
+font-size:18px;
+margin-bottom:30px;
+}
+
+.contact-info{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:20px;
+}
+
+.info-item{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:18px;
 }
 
 /* =========================
    FOOTER
 ========================= */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #ff4d6d;
-  color: #fff;
-  margin-top: 40px;
+
+footer{
+text-align:center;
+padding:20px;
+background:#ff4d6d;
+color:#fff;
+margin-top:40px;
 }
 
 /* =========================
-   SIMPLE FADE ANIMATION
-========================= */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* =========================
-   ABOUT PAGE FIX
+   ANIMATION
 ========================= */
 
-.about {
-  text-align: center;
-  padding: 50px 20px;
-  max-width: 900px;
-  margin: auto;
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
 }
-
-.about h1 {
-  font-size: 32px;
-  color: #ff4d6d;
-  margin-bottom: 25px;
+to{
+opacity:1;
+transform:translateY(0);
 }
-
-.about p {
-  font-size: 18px;
-  margin-bottom: 20px;
-  line-height: 1.8;
 }
-
-/* Team Section */
-.team {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin: 40px 0;
-}
-
-.team-member {
-  text-align: center;
-  max-width: 200px;
-}
-
-.team-member img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-/* Promise Section */
-.our-promise {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin: 40px 0;
-}
-
-.promise-item {
-  background: #ffe6eb;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 250px;
-  text-align: center;
-}
-
-/* =========================
-   CONTACT PAGE FIX
-========================= */
-
-.contact {
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.contact h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.contact p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-}
-
-/* Responsive Fix */
-@media (max-width: 768px) {
-  .team,
-  .our-promise {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-
-.product {
-  animation: fadeUp 0.6s ease forwards;
-}
-
-
-/* =========================
-   DROPDOWN MENU
-========================= */
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background: #fff;
-  width: 180px;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-
-  display: none;
-  flex-direction: column;
-  z-index: 1000;
-}
-
-.dropdown-menu li {
-  list-style: none;
-}
-
-.dropdown-menu li a {
-  display: block;
-  padding: 12px;
-  color: #333;
-  text-decoration: none;
-}
-
-.dropdown-menu li a:hover {
-  background: #ff4d6d;
-  color: #fff;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-@media (max-width:768px){
-
-  .dropdown-menu{
-    position: static;
-    width: 100%;
-    background:#222;
-    box-shadow:none;
-  }
-
-  .dropdown-menu li a{
-    color:#fff;
-  }
-
-}
-
-

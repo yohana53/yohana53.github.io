@@ -117,6 +117,56 @@ nav ul li a:hover {
     color: #fff;
   }
 }
+/* =========================
+   DROPDOWN MENU
+========================= */
+
+.dropdown{
+position: relative;
+}
+
+.dropdown-menu{
+display: none;
+position: absolute;
+top: 40px;
+left: 0;
+background: #fff;
+min-width: 180px;
+border-radius: 8px;
+box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+list-style: none;
+padding: 10px 0;
+z-index: 999;
+}
+
+.dropdown-menu li{
+border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu li:last-child{
+border-bottom:none;
+}
+
+.dropdown-menu li a{
+display:block;
+padding:10px 15px;
+color:#333;
+text-decoration:none;
+font-weight:500;
+}
+
+.dropdown-menu li a:hover{
+background:#ff4d6d;
+color:#fff;
+}
+
+/* show dropdown */
+
+.dropdown:hover .dropdown-menu{
+display:block;
+}
+
+
 
 /* =========================
    HERO SECTION
@@ -218,6 +268,20 @@ nav ul li a:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width:768px){
+
+.dropdown-menu{
+position:static;
+box-shadow:none;
+background:#111;
+}
+
+.dropdown-menu li a{
+color:#fff;
+}
+
+}
+
 
 /* Product Card */
 .product {
@@ -423,4 +487,5 @@ footer {
 .product {
   animation: fadeUp 0.6s ease forwards;
 }
+
 

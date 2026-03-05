@@ -178,7 +178,10 @@ font-weight:bold;
 </div>
 
 </div>
+<button onclick="prevImage()">◀</button>
+<button onclick="nextImage()">▶</button>
 
+  
 <script>
 
 const whatsappNumber="255715029419"
@@ -187,14 +190,41 @@ let cart=0
 
 const products=[
 
-{name:"Men Jacket",price:49000,image:"images/product1.jpg",category:"Men"},
-{name:"Sneakers",price:59000,image:"images/product2.jpg",category:"Shoes"},
-{name:"Women Dress",price:39000,image:"images/product3.jpg",category:"Women"},
-{name:"Handbag",price:45000,image:"images/product4.jpg",category:"Bags"},
-{name:"Cap",price:15000,image:"images/product5.jpg",category:"Accessories"},
-{name:"Sport Shoes",price:52000,image:"images/product6.jpg",category:"Shoes"}
+{
+name:"Men Jacket",
+price:49000,
+category:"Men",
+rating:5,
+images:[
+"images/product1.jpg",
+"images/product1b.jpg",
+"images/product1c.jpg"
+]
+},
+
+{
+name:"Sneakers",
+price:59000,
+category:"Shoes",
+rating:4,
+images:[
+"images/product2.jpg",
+"images/product2b.jpg"
+]
+},
+
+{
+name:"Women Dress",
+price:39000,
+category:"Women",
+rating:5,
+images:[
+"images/product3.jpg"
+]
+}
 
 ]
+
 
 const grid=document.getElementById("product-grid")
 
@@ -208,15 +238,23 @@ const card=document.createElement("div")
 
 card.classList.add("product")
 
-card.innerHTML=`
+card.innerHTML = `
 
-<img src="${product.image}">
+<img src="${product.images[0]}">
 
 <h3>${product.name}</h3>
 
 <p>TSh ${product.price.toLocaleString()}</p>
 
+<div class="rating">
+${"⭐".repeat(product.rating)}
+</div>
+
 <button class="btn view-btn">View</button>
+
+<button class="btn add-cart">Add to Cart</button>
+
+`
 
 `
 
@@ -275,7 +313,14 @@ currentProduct=product
 
 modal.style.display="block"
 
-modalImg.src=product.image
+let currentImage=0
+
+function showImage(product){
+
+modalImg.src = product.images[currentImage]
+
+}
+
 
 modalTitle.textContent=product.name
 
@@ -289,6 +334,31 @@ modalWhatsapp.href=
 document.querySelector(".close").onclick=()=>modal.style.display="none"
 
 window.onclick=(e)=>{if(e.target==modal)modal.style.display="none"}
+
+  function nextImage(){
+
+currentImage++
+
+if(currentImage>=currentProduct.images.length){
+currentImage=0
+}
+
+showImage(currentProduct)
+
+}
+
+function prevImage(){
+
+currentImage--
+
+if(currentImage<0){
+currentImage=currentProduct.images.length-1
+}
+
+showImage(currentProduct)
+
+}
+
 
 /* ZOOM IMAGE */
 
@@ -319,6 +389,7 @@ const menuToggle=document.getElementById("menu-toggle")
 const navbar=document.getElementById("navbar")
 
 menuToggle.onclick=()=>navbar.classList.toggle("active")
+  
 
 </script>
 
@@ -334,3 +405,4 @@ menuToggle.onclick=()=>navbar.classList.toggle("active")
 
 </body>
 </html>
+

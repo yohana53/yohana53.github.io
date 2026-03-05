@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Cart | Yohana Fashion</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.cart-container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.cart-item{
+display:flex;
+align-items:center;
+gap:20px;
+border-bottom:1px solid #ddd;
+padding:20px 0;
+}
+
+.cart-item img{
+width:80px;
+border-radius:8px;
+}
+
+.cart-total{
+margin-top:30px;
+font-size:20px;
+font-weight:bold;
+}
+
+.checkout-btn{
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Yohana Fashion</div>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="cart.html">Cart</a></li>
+</ul>
+</nav>
+
+</header>
+
+<div class="cart-container">
+
+<h1>Your Cart</h1>
+
+<div id="cart-items"></div>
+
+<div class="cart-total">
+Total: TSh <span id="cart-total">0</span>
+</div>
+
+<a id="checkoutBtn" class="btn whatsapp-btn">
+<i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+</a>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || []
+
+const container=document.getElementById("cart-items")
+
+let total=0
+
+cart.forEach(item=>{
+
+total += item.price
+
+container.innerHTML += `
+
+<div class="cart-item">
+
+<img src="${item.image}">
+
+<div>
+
+<h3>${item.name}</h3>
+
+<p>TSh ${item.price.toLocaleString()}</p>
+
+</div>
+
+</div>
+
+`
+
+})
+
+document.getElementById("cart-total").textContent=total.toLocaleString()
+
+const message = cart.map(p=>p.name).join(", ")
+
+document.getElementById("checkoutBtn").href =
+`https://wa.me/255715029419?text=Hello I want to order: ${encodeURIComponent(message)}`
+
+</script>
+
+</body>
+</html>

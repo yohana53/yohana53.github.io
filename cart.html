@@ -1,46 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Your Cart | Yohana Fashion</title>
+<title>Cart | Yohana Fashion</title>
 
 <link rel="stylesheet" href="style.css">
-
-<style>
-
-.cart-container{
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-}
-
-.cart-item{
-display:flex;
-align-items:center;
-gap:20px;
-border-bottom:1px solid #ddd;
-padding:20px 0;
-}
-
-.cart-item img{
-width:80px;
-border-radius:8px;
-}
-
-.cart-total{
-margin-top:30px;
-font-size:20px;
-font-weight:bold;
-}
-
-.checkout-btn{
-margin-top:20px;
-}
-
-</style>
 
 </head>
 
@@ -51,11 +20,15 @@ margin-top:20px;
 <div class="logo">Yohana Fashion</div>
 
 <nav>
+
 <ul>
+
 <li><a href="index.html">Home</a></li>
+
 <li><a href="shop.html">Shop</a></li>
-<li><a href="cart.html">Cart</a></li>
+
 </ul>
+
 </nav>
 
 </header>
@@ -66,29 +39,25 @@ margin-top:20px;
 
 <div id="cart-items"></div>
 
-<div class="cart-total">
-Total: TSh <span id="cart-total">0</span>
-</div>
+<h3>Total: TSh <span id="total"></span></h3>
 
-<a id="checkoutBtn" class="btn whatsapp-btn">
-<i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-</a>
+<a id="checkout" class="btn whatsapp-btn">Checkout via WhatsApp</a>
 
 </div>
 
 <script>
 
-let cart = JSON.parse(localStorage.getItem("cart")) || []
+let cart=JSON.parse(localStorage.getItem("cart"))||[]
 
-const container=document.getElementById("cart-items")
+let container=document.getElementById("cart-items")
 
 let total=0
 
 cart.forEach(item=>{
 
-total += item.price
+total+=item.price
 
-container.innerHTML += `
+container.innerHTML+=`
 
 <div class="cart-item">
 
@@ -108,31 +77,16 @@ container.innerHTML += `
 
 })
 
-document.getElementById("cart-total").textContent=total.toLocaleString()
+document.getElementById("total").textContent=total.toLocaleString()
 
-const message = cart.map(p=>p.name).join(", ")
+let text=cart.map(p=>p.name).join(",")
 
-document.getElementById("checkoutBtn").href =
-`https://wa.me/255715029419?text=Hello I want to order: ${encodeURIComponent(message)}`
+document.getElementById("checkout").href=
 
-  card.querySelector(".add-cart").onclick=()=>{
-
-let cart = JSON.parse(localStorage.getItem("cart")) || []
-
-cart.push({
-name:product.name,
-price:product.price,
-image:product.images[0]
-})
-
-localStorage.setItem("cart",JSON.stringify(cart))
-
-alert("Added to cart")
-
-}
+`https://wa.me/255715029419?text=Hello I want to order: ${encodeURIComponent(text)}`
 
 </script>
 
 </body>
-</html>
 
+</html>

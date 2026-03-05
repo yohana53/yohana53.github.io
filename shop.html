@@ -2,41 +2,36 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Shop Fashion | Yohana Fashion Tanzania</title>
+<title>Shop Fashion | Yohana Fashion Tanzania</title>
 
-  <meta name="description" content="Browse stylish jackets, dresses, sneakers and more at Yohana Fashion. Order directly via WhatsApp in Tanzania.">
+<meta name="description" content="Browse stylish jackets, dresses, sneakers and more at Yohana Fashion. Order directly via WhatsApp in Tanzania.">
 
-  <meta name="keywords" content="buy clothes Tanzania, shop fashion Dar es Salaam, jackets Tanzania, dresses Tanzania, sneakers Tanzania">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <meta name="author" content="Yohana Fashion">
-
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 
 <body>
 
+<!-- HEADER -->
 <header>
-  <div class="logo">Yohana Fashion</div>
 
-  <div class="menu-toggle" id="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
+<div class="logo">Yohana Fashion</div>
 
-  <nav id="navbar">
+<div class="menu-toggle" id="menu-toggle">
+<i class="fas fa-bars"></i>
+</div>
 
+<nav id="navbar">
 <ul>
 
 <li><a href="index.html">Home</a></li>
-
 <li><a href="shop.html">Shop</a></li>
 
 <li class="dropdown">
-
 <a href="#">Collections ▾</a>
 
 <ul class="dropdown-menu">
@@ -44,7 +39,7 @@
 <li><a href="men.html">Men</a></li>
 <li><a href="women.html">Women</a></li>
 <li><a href="kids.html">Kids</a></li>
-<li><a href="tshirts.html">T-shirts</a></li>
+<li><a href="tshirts.html">T-Shirts</a></li>
 <li><a href="dresses.html">Dresses</a></li>
 <li><a href="trousers.html">Trousers</a></li>
 <li><a href="shoes.html">Shoes</a></li>
@@ -53,141 +48,184 @@
 <li><a href="others.html">Others</a></li>
 
 </ul>
-
 </li>
 
 <li><a href="about.html">About</a></li>
-
 <li><a href="contact.html">Contact</a></li>
 
 </ul>
-
 </nav>
 
 </header>
 
-<!-- Banner -->
+<!-- BANNER -->
 <section class="banner">
-  <h2>✨ New Products Available! ✨</h2>
-  <p>Check out our latest arrivals and order directly via WhatsApp</p>
+<h2>✨ New Products Available! ✨</h2>
+<p>Check out our latest arrivals and order directly via WhatsApp</p>
 </section>
 
-<!-- Shop -->
+<!-- SHOP -->
 <section class="shop">
-  <h1>Shop Our Products</h1>
 
-  <!-- Currency Switch Button -->
-  <button onclick="toggleCurrency()" 
-          id="currency-btn"
-          style="margin-bottom:20px;padding:8px 15px;border:none;background:#ff4d6d;color:white;border-radius:6px;cursor:pointer;">
-    TSh
-  </button>
+<h1>Shop Our Products</h1>
 
-  <div class="product-grid" id="product-grid"></div>
+<!-- Currency Switch -->
+<button onclick="switchCurrency()" class="btn">Switch Currency</button>
+
+<div class="product-grid" id="product-grid"></div>
+
 </section>
 
+<!-- PRODUCT POPUP -->
+<div id="productModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close">&times;</span>
+
+<img id="modalImg">
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalPrice"></p>
+
+<a id="modalWhatsapp" class="btn whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Order on WhatsApp
+</a>
+
+</div>
+
+</div>
 
 <script>
-const whatsappNumber = "255715029419";
 
-/* ===== EXCHANGE RATE ===== */
-/* 1 USD ≈ 2500 TSh (change anytime) */
-const exchangeRate = 2500;
+const whatsappNumber = "255715029419"
 
-/* ===== CURRENT CURRENCY ===== */
-let currentCurrency = "TSh";
+let currency = "USD"
 
-/* ===== PRODUCTS (KEEP PRICE AS NUMBER ONLY) ===== */
+const rate = 2500
+
 const products = [
-  { name: "Stylish Jacket", price: 50, image: "images/product1.jpg" },
-  { name: "Sneakers", price: 60, image: "images/product2.jpg" },
-  { name: "Casual Dress", price: 40, image: "images/product3.jpg" },
-  { name: "Summer Hat", price: 20, image: "images/product4.jpg" },
-  { name: "Leather Bag", price: 70, image: "images/product5.jpg" },
-  { name: "Sunglasses", price: 25, image: "images/product6.jpg" }
-];
 
-const grid = document.getElementById("product-grid");
+{ name:"Stylish Jacket", price:49.99, image:"images/product1.jpg" },
+{ name:"Sneakers", price:59.99, image:"images/product2.jpg" },
+{ name:"Casual Dress", price:39.99, image:"images/product3.jpg" },
+{ name:"Summer Hat", price:19.99, image:"images/product4.jpg" },
+{ name:"Leather Bag", price:69.99, image:"images/product5.jpg" },
+{ name:"Sunglasses", price:24.99, image:"images/product6.jpg" },
 
-/* ===== FORMAT NUMBER ===== */
-function formatNumber(num) {
-  return num.toLocaleString();
+]
+
+const grid = document.getElementById("product-grid")
+
+function formatNumber(num){
+return num.toLocaleString()
 }
 
-/* ===== CONVERT PRICE ===== */
-function getConvertedPrice(priceUSD) {
-  if (currentCurrency === "USD") {
-    return "$" + formatNumber(priceUSD);
-  } else {
-    return "TSh " + formatNumber(priceUSD * exchangeRate);
-  }
+function convertPrice(price){
+
+if(currency==="USD"){
+return "$"+price
 }
 
-/* ===== RENDER PRODUCTS ===== */
-function renderProducts() {
-  grid.innerHTML = "";
+let tsh = price*rate
 
-  products.forEach(product => {
-    const convertedPrice = getConvertedPrice(product.price);
+return "TSh "+formatNumber(Math.round(tsh))
 
-    const card = document.createElement("div");
-    card.classList.add("product");
-
-    card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p>${convertedPrice}</p>
-      <a href="https://wa.me/${whatsappNumber}?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}"
-         class="btn whatsapp-btn" target="_blank">
-         <i class="fab fa-whatsapp"></i> Order via WhatsApp
-      </a>
-    `;
-
-    grid.appendChild(card);
-  });
 }
 
-/* ===== CURRENCY SWITCH ===== */
-function toggleCurrency() {
-  currentCurrency = currentCurrency === "USD" ? "TSh" : "USD";
-  document.getElementById("currency-btn").innerText = currentCurrency;
-  renderProducts();
+function renderProducts(){
+
+grid.innerHTML=""
+
+products.forEach(product=>{
+
+const card=document.createElement("div")
+card.classList.add("product")
+
+card.innerHTML=`
+
+<img src="${product.image}">
+
+<h3>${product.name}</h3>
+
+<p>${convertPrice(product.price)}</p>
+
+<button class="btn view-btn">View Details</button>
+
+`
+
+grid.appendChild(card)
+
+card.querySelector(".view-btn").onclick=()=>openModal(product)
+
+})
+
 }
 
-/* Initial render */
-renderProducts();
+function switchCurrency(){
+
+currency = currency==="USD" ? "TSh" : "USD"
+
+renderProducts()
+
+}
+
+renderProducts()
+
+/* PRODUCT MODAL */
+
+const modal=document.getElementById("productModal")
+const modalImg=document.getElementById("modalImg")
+const modalTitle=document.getElementById("modalTitle")
+const modalPrice=document.getElementById("modalPrice")
+const modalWhatsapp=document.getElementById("modalWhatsapp")
+
+function openModal(product){
+
+modal.style.display="block"
+
+modalImg.src=product.image
+modalTitle.textContent=product.name
+modalPrice.textContent=convertPrice(product.price)
+
+modalWhatsapp.href=
+`https://wa.me/${whatsappNumber}?text=Hi I want to order ${encodeURIComponent(product.name)}`
+
+}
+
+document.querySelector(".close").onclick=()=>{
+modal.style.display="none"
+}
+
+window.onclick=(e)=>{
+if(e.target==modal){
+modal.style.display="none"
+}
+}
+
+/* MOBILE MENU */
+
+const menuToggle=document.getElementById("menu-toggle")
+const navbar=document.getElementById("navbar")
+
+menuToggle.onclick=()=>{
+navbar.classList.toggle("active")
+}
+
 </script>
 
+<!-- FLOATING WHATSAPP -->
 
-<!-- Floating WhatsApp -->
 <a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
-  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+<i class="fab fa-whatsapp"></i>
 </a>
 
 <footer>
-  <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
+
+<p>© 2026 Yohana Fashion. All Rights Reserved.</p>
+
 </footer>
-
-<!-- Mobile Menu -->
-<script>
-const menuToggle = document.getElementById('menu-toggle');
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('#navbar a');
-
-menuToggle.addEventListener('click', () => {
-  navbar.classList.toggle('active');
-});
-
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navbar.classList.remove('active');
-  });
-});
-</script>
 
 </body>
 </html>
-
-
-
-

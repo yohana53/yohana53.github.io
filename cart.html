@@ -115,7 +115,24 @@ const message = cart.map(p=>p.name).join(", ")
 document.getElementById("checkoutBtn").href =
 `https://wa.me/255715029419?text=Hello I want to order: ${encodeURIComponent(message)}`
 
+  card.querySelector(".add-cart").onclick=()=>{
+
+let cart = JSON.parse(localStorage.getItem("cart")) || []
+
+cart.push({
+name:product.name,
+price:product.price,
+image:product.images[0]
+})
+
+localStorage.setItem("cart",JSON.stringify(cart))
+
+alert("Added to cart")
+
+}
+
 </script>
 
 </body>
 </html>
+

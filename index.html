@@ -37,9 +37,37 @@
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="shop.html">Shop</a></li>
-      <li><a href="collections.html">Collections</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li class="dropdown">
+
+<a href="#">Collections</a>
+
+<div class="dropdown-menu">
+
+<a href="shop.html?category=men">Men</a>
+<a href="shop.html?category=women">Women</a>
+<a href="shop.html?category=kids">Kids</a>
+<a href="shop.html?category=tshirts">T-Shirts</a>
+<a href="shop.html?category=dresses">Dresses</a>
+<a href="shop.html?category=trousers">Trousers</a>
+<a href="shop.html?category=shoes">Shoes</a>
+<a href="shop.html?category=bags">Bags</a>
+<a href="shop.html?category=accessories">Accessories</a>
+<a href="shop.html?category=others">Others</a>
+
+</div>
+
+</li>
+
+<li>
+<a href="cart.html">
+Cart <span id="cart-count" class="cart-badge">0</span>
+</a>
+</li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+      
     </ul>
   </nav>
 </header>
@@ -126,3 +154,4 @@ navLinks.forEach(link => {
 
 </body>
 </html>
+

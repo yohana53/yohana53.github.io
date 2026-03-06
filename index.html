@@ -144,23 +144,23 @@ Cart <span id="cart-count" class="cart-badge">0</span>
   <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
 </footer>
 
+
+
+  
 <script>
-const menuToggle = document.getElementById('menu-toggle');
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('#navbar a');
 
-menuToggle.addEventListener('click', () => {
-  navbar.classList.toggle('active');
-});
+const menuToggle = document.getElementById("menu-toggle");
+const navbar = document.getElementById("navbar");
 
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navbar.classList.remove('active');
-  });
-});
+menuToggle.onclick = () => {
+navbar.classList.toggle("active");
+};
+
 </script>
+
 
 </body>
 </html>
+
 
 

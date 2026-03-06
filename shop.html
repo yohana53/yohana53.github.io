@@ -2,9 +2,6 @@
 <html>
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Shop | Yohana Fashion</title>
 
 <link rel="stylesheet" href="style.css">
@@ -18,152 +15,57 @@
 <div class="logo">Yohana Fashion</div>
 
 <nav>
+
 <ul>
+
 <li><a href="index.html">Home</a></li>
+
 <li><a href="shop.html">Shop</a></li>
-<li><a href="cart.html">Cart</a></li>
+
+<li class="dropdown">
+
+<a href="#">Collections</a>
+
+<div class="dropdown-menu">
+
+<a href="shop.html?category=men">Men</a>
+<a href="shop.html?category=women">Women</a>
+<a href="shop.html?category=kids">Kids</a>
+<a href="shop.html?category=tshirts">T-Shirts</a>
+<a href="shop.html?category=dresses">Dresses</a>
+<a href="shop.html?category=trousers">Trousers</a>
+<a href="shop.html?category=shoes">Shoes</a>
+<a href="shop.html?category=bags">Bags</a>
+<a href="shop.html?category=accessories">Accessories</a>
+<a href="shop.html?category=others">Others</a>
+
+</div>
+
+</li>
+
+<li>
+<a href="cart.html">Cart <span id="cart-count" class="cart-badge">0</span></a>
+</li>
+
 </ul>
+
 </nav>
 
 </header>
 
-<section class="shop">
+<section class="products">
 
-<h1>Shop Our Products</h1>
+<h1>Shop Products</h1>
 
-<div class="product-grid" id="grid"></div>
+<div id="product-grid" class="product-grid"></div>
 
 </section>
 
-<!-- MODAL -->
+<div id="popup" class="popup"></div>
 
-<div class="modal" id="modal">
-
-<div class="modal-content">
-
-<img id="modalImg">
-
-<h3 id="modalName"></h3>
-
-<p id="modalPrice"></p>
-
-<div id="modalRating"></div>
-
-<button class="btn" id="addCartBtn">Add to Cart</button>
-
-</div>
-
-</div>
-
-<script>
-
-const grid=document.getElementById("grid")
-
-const modal=document.getElementById("modal")
-
-const modalImg=document.getElementById("modalImg")
-
-const modalName=document.getElementById("modalName")
-
-const modalPrice=document.getElementById("modalPrice")
-
-const modalRating=document.getElementById("modalRating")
-
-let selectedProduct=null
-
-const products=[
-
-{
-name:"Men Jacket",
-price:49000,
-rating:5,
-images:["images/product1.jpg","images/product1b.jpg"]
-},
-
-{
-name:"Sneakers",
-price:59000,
-rating:4,
-images:["images/product2.jpg"]
-},
-
-{
-name:"Dress",
-price:39000,
-rating:5,
-images:["images/product3.jpg"]
-},
-
-{
-name:"Hat",
-price:19000,
-rating:3,
-images:["images/product4.jpg"]
-}
-
-]
-
-products.forEach(p=>{
-
-const card=document.createElement("div")
-
-card.className="product"
-
-card.innerHTML=`
-
-<img src="${p.images[0]}">
-
-<h3>${p.name}</h3>
-
-<p>TSh ${p.price.toLocaleString()}</p>
-
-<div class="rating">${"⭐".repeat(p.rating)}</div>
-
-<button class="btn">View</button>
-
-`
-
-card.querySelector("button").onclick=()=>{
-
-selectedProduct=p
-
-modal.style.display="flex"
-
-modalImg.src=p.images[0]
-
-modalName.textContent=p.name
-
-modalPrice.textContent="TSh "+p.price.toLocaleString()
-
-modalRating.textContent="⭐".repeat(p.rating)
-
-}
-
-grid.appendChild(card)
-
-})
-
-modal.onclick=(e)=>{
-if(e.target===modal) modal.style.display="none"
-}
-
-document.getElementById("addCartBtn").onclick=()=>{
-
-let cart=JSON.parse(localStorage.getItem("cart"))||[]
-
-cart.push({
-name:selectedProduct.name,
-price:selectedProduct.price,
-image:selectedProduct.images[0]
-})
-
-localStorage.setItem("cart",JSON.stringify(cart))
-
-alert("Added to cart")
-
-}
-
-</script>
+<script src="products.js"></script>
+<script src="cart.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

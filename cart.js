@@ -1,27 +1,63 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function addToCart(id){
+function updateCartCount(){
+document.getElementById("cart-count").innerText = cart.length;
+}
 
-let product = products.find(p=>p.id===id);
+updateCartCount();
+
+function addToCart(product){
 
 cart.push(product);
 
-localStorage.setItem("cart",JSON.stringify(cart));
+localStorage.setItem("cart", JSON.stringify(cart));
 
-updateCartBadge();
+updateCartCount();
 
-alert("Added to cart");
-
-}
-
-function updateCartBadge(){
-
-let badge=document.getElementById("cart-count");
-
-if(badge){
-badge.innerText=cart.length;
-}
+alert(product.name + " added to cart");
 
 }
 
-updateCartBadge();
+function removeFromCart(index){
+
+cart.splice(index,1);
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+displayCart();
+
+updateCartCount();
+
+}
+
+function displayCart(){
+
+const cartContainer = document.getElementById("cart-items");
+
+if(!cartContainer) return;
+
+cartContainer.innerHTML = "";
+
+cart.forEach((item,index)=>{
+
+cartContainer.innerHTML += `
+
+<div class="product">
+
+<img src="${item.image}" width="100">
+
+<h3>${item.name}</h3>
+
+<p>TSh ${item.price}</p>
+
+<button onclick="removeFromCart(${index})">❌ Remove</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+displayCart();

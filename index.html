@@ -3,82 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Yohana Fashion | Trendy Clothes in Dar es Salaam Tanzania</title>
-
-  <meta name="description" content="Yohana Fashion offers trendy and affordable clothes in Dar es Salaam, Tanzania. Shop men, women, kids, shoes and more. Order easily via WhatsApp.">
-  
-  <meta name="keywords" content="Yohana Fashion, clothes in Tanzania, fashion in Dar es Salaam, men clothing Tanzania, women fashion Tanzania, kids clothes Tanzania, shoes Tanzania">
-
-  <meta name="author" content="Yohana Fashion">
-
-  <!-- Open Graph (for social media sharing) -->
-  <meta property="og:title" content="Yohana Fashion - Trendy Styles for Everyone">
-  <meta property="og:description" content="Shop trendy and affordable fashion in Dar es Salaam. Order easily via WhatsApp.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yohana53.github.io">
-  <meta property="og:image" content="https://yohana53.github.io/images/hero.jpg">
-
+  <title>Yohana Fashion</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 
 <body>
 
 <header>
+  <div class="logo">Yohana Fashion</div>
 
-<div class="logo">Yohana Fashion</div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
 
-<div class="menu-toggle" id="menu-toggle">
-☰
-</div>
-
-<nav id="navbar">
-
-<ul>
-
-<li><a href="index.html">Home</a></li>
-
-<li><a href="shop.html">Shop</a></li>
-
-<li class="dropdown">
-
-<a href="#">Collections</a>
-
-<div class="dropdown-menu">
-
-<a href="shop.html?category=men">Men</a>
-<a href="shop.html?category=women">Women</a>
-<a href="shop.html?category=kids">Kids</a>
-<a href="shop.html?category=tshirts">T-Shirts</a>
-<a href="shop.html?category=dresses">Dresses</a>
-<a href="shop.html?category=trousers">Trousers</a>
-<a href="shop.html?category=shoes">Shoes</a>
-<a href="shop.html?category=bags">Bags</a>
-<a href="shop.html?category=accessories">Accessories</a>
-<a href="shop.html?category=others">Others</a>
-
-</div>
-
-</li>
-
-<li>
-<a href="cart.html">
-Cart <span id="cart-count" class="cart-badge">0</span>
-</a>
-</li>
-
-<li><a href="about.html">About</a></li>
-
-<li><a href="contact.html">Contact</a></li>
-
-</ul>
-
-</nav>
-
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
-
 
 <!-- Hero -->
 <section class="hero">
@@ -114,7 +62,7 @@ Cart <span id="cart-count" class="cart-badge">0</span>
 
     <div class="product">
       <img src="images/product2.jpg" alt="Modern Sneakers">
-      <h3>Sneakers</h3>
+      <h3>Modern Sneakers</h3>
       <p>$59.99</p>
       <a href="https://wa.me/255715029419?text=Hi,%20I%20want%20to%20order%20Modern%20Sneakers"
          class="btn whatsapp-btn" target="_blank">
@@ -144,23 +92,21 @@ Cart <span id="cart-count" class="cart-badge">0</span>
   <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
 </footer>
 
-
-
-  
 <script>
+const menuToggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('#navbar a');
 
-const menuToggle = document.getElementById("menu-toggle");
-const navbar = document.getElementById("navbar");
+menuToggle.addEventListener('click', () => {
+  navbar.classList.toggle('active');
+});
 
-menuToggle.onclick = () => {
-navbar.classList.toggle("active");
-};
-
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navbar.classList.remove('active');
+  });
+});
 </script>
-
 
 </body>
 </html>
-
-
-

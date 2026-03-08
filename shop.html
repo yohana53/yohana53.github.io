@@ -1,71 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Yohana Fashion</title>
 
-<title>Shop | Yohana Fashion</title>
+  <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
 <header>
+  <div class="logo">Yohana Fashion</div>
 
-<div class="logo">Yohana Fashion</div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
 
-<nav>
-
-<ul>
-
-<li><a href="index.html">Home</a></li>
-
-<li><a href="shop.html">Shop</a></li>
-
-<li class="dropdown">
-
-<a href="#">Collections</a>
-
-<div class="dropdown-menu">
-
-<a href="shop.html?category=men">Men</a>
-<a href="shop.html?category=women">Women</a>
-<a href="shop.html?category=kids">Kids</a>
-<a href="shop.html?category=tshirts">T-Shirts</a>
-<a href="shop.html?category=dresses">Dresses</a>
-<a href="shop.html?category=trousers">Trousers</a>
-<a href="shop.html?category=shoes">Shoes</a>
-<a href="shop.html?category=bags">Bags</a>
-<a href="shop.html?category=accessories">Accessories</a>
-<a href="shop.html?category=others">Others</a>
-
-</div>
-
-</li>
-
-<li>
-<a href="cart.html">Cart <span id="cart-count" class="cart-badge">0</span></a>
-</li>
-
-</ul>
-
-</nav>
-
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 
-<section class="products">
-
-<h1>Shop Products</h1>
-
-<div id="product-grid" class="product-grid"></div>
-
+<!-- Banner -->
+<section class="banner">
+  <h2>✨ New Products Available! ✨</h2>
+  <p>Check out our latest arrivals and order directly via WhatsApp</p>
 </section>
 
-<div id="popup" class="popup"></div>
+<!-- Shop -->
+<section class="shop">
+  <h1>Shop Our Products</h1>
+  <div class="product-grid" id="product-grid"></div>
+</section>
 
-<script src="products.js"></script>
-<script src="cart.js"></script>
-<script src="script.js"></script>
+<script>
+const whatsappNumber = "255715029419";
+
+const products = [
+  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
+  { name: "Modern Sneakers", price: "$59.99", image: "images/product2.jpg" },
+  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
+  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
+  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
+  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" }
+];
+
+const grid = document.getElementById("product-grid");
+
+products.forEach(product => {
+  const card = document.createElement("div");
+  card.classList.add("product");
+
+  card.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>${product.price}</p>
+    <a href="https://wa.me/${whatsappNumber}?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}"
+       class="btn whatsapp-btn" target="_blank">
+       <i class="fab fa-whatsapp"></i> Order via WhatsApp
+    </a>
+  `;
+
+  grid.appendChild(card);
+});
+</script>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+</a>
+
+<footer>
+  <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
+</footer>
+
+<!-- Mobile Menu -->
+<script>
+const menuToggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('#navbar a');
+
+menuToggle.addEventListener('click', () => {
+  navbar.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navbar.classList.remove('active');
+  });
+});
+</script>
 
 </body>
 </html>

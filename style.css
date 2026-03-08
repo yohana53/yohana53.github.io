@@ -1,4 +1,10 @@
 
+html, body{
+width:100%;
+overflow-x:hidden;
+}
+
+
 *{
 box-sizing:border-box;
 }
@@ -988,6 +994,7 @@ height:140px;
 object-fit:cover;
 border-radius:8px;
 }
+
 
 
 

@@ -937,6 +937,42 @@ nav ul li a:hover {
   }
 }
 
+/* PRODUCTS GRID */
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:20px;
+padding:20px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px){
+
+.product-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+/* PHONE */
+
+@media (max-width: 600px){
+
+.product-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+.product img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:8px;
+}
+
 
 
 

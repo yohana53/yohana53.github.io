@@ -605,3 +605,47 @@ font-size:14px;
 
 
 
+  /* ===== Smooth button hover ===== */
+.btn, .whatsapp-btn, .about-whatsapp, .whatsapp-float {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover, 
+.whatsapp-btn:hover, 
+.about-whatsapp:hover, 
+.whatsapp-float:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Product card hover ===== */
+.product {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== Promise item hover ===== */
+.promise-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promise-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ===== Team member hover ===== */
+.team-member img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+
+

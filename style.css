@@ -337,70 +337,62 @@ grid-template-columns:1fr;
 }
 
 
-  /* ===== General Page Styling ===== */
-.page-container {
-  padding: 15px;
-  max-width: 100%;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  /* =========================
+   ABOUT PAGE
+========================= */
+
+.about-container{
+    padding:15px;
+    max-width:100%;
 }
 
-/* ===== Page Title ===== */
-.page-title {
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #ff4d6d;
+.about-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:10px;
+    text-align:center;
 }
 
-/* ===== About Page ===== */
-.about-box {
-  background: #ffffff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  font-size: 15px;
-  line-height: 1.6;
-  color: #444;
+.about-text{
+    font-size:14px;
+    line-height:1.6;
+    color:#555;
 }
 
-/* ===== Contact Page ===== */
-.contact-box {
-  background: #ffffff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+/* =========================
+   CONTACT PAGE
+========================= */
+
+.contact-container{
+    padding:15px;
+    max-width:100%;
 }
 
-/* Contact Items */
-.contact-item {
-  margin-bottom: 12px;
-  font-size: 15px;
+.contact-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+    text-align:center;
 }
 
-/* WhatsApp Button */
-.whatsapp-btn {
-  display: block;
-  text-align: center;
-  background: #25D366;
-  color: white;
-  padding: 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 15px;
+.contact-info{
+    font-size:14px;
+    margin-bottom:10px;
 }
 
-/* ===== Mobile Optimization ===== */
-@media (max-width: 600px) {
-  .page-title {
-    font-size: 20px;
-  }
+.contact-btn{
+    display:inline-block;
+    background:#25D366;
+    color:white;
+    padding:10px 15px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:14px;
+}
 
-  .about-box,
-  .contact-box {
     padding: 12px;
     font-size: 14px;
   }
 }
+

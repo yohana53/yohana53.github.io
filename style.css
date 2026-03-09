@@ -305,3 +305,34 @@ grid-template-columns:1fr;
 }
 
 }
+
+/* Carousel container */
+.carousel-container {
+  margin: 40px 0;
+}
+
+.carousel-container h2 {
+  margin-left: 20px;
+  color: #ff4d6d;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Carousel */
+.carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 20px;
+  scroll-behavior: smooth;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background-color: #ff4d6d;
+  border-radius: 4px;
+}
+

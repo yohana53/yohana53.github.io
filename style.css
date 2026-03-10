@@ -154,23 +154,17 @@ border-radius:10px;
   background-color: #e03c5f;
 }
 
-/* ===== WhatsApp Button ===== */
-/* ===== WhatsApp Button ===== */
-.btn whatsapp-btn {
-  background-color: #25D366; /* WhatsApp green */
-  color: #fff;
+
+/* =====hero WhatsApp Button ===== */
+.whatsapp-btn {
+  background-color: #25D366;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-weight: bold;
 }
 
-.btn whatsapp-btn:hover {
+.whatsapp-btn:hover {
   background-color: #1ebe5d;
-}
 
 /* ===== PRODUCTS ===== */
 
@@ -837,6 +831,7 @@ transition:0.3s;
 background:white;
 color:#ff4d6d;
 }
+
 
 
 

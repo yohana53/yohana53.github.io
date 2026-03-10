@@ -235,13 +235,6 @@ background:#1ebe5d;
 
 /* ===== FOOTER ===== */
 
-footer{
-text-align:center;
-padding:20px;
-background:#ff4d6d;
-color:#fff;
-margin-top:40px;
-}
 
 
 /* ===== FLOAT WHATSAPP ===== */
@@ -477,6 +470,7 @@ transition:0.3s;
 background:#25D366;
 transform:scale(1.1);
 }
+
 
 
 

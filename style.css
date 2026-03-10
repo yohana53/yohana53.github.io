@@ -578,11 +578,12 @@ grid-template-columns:1fr;
 }
 
 /* ===== Footer ===== */
-footer-top {
+.footer-top {
   text-align: center;
   padding: 20px;
   background-color: #ff4d6d;
   color: #fff;
   margin-top: 40px;
 }
+
 

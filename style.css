@@ -253,14 +253,6 @@ background:#1ebe5d;
   border-radius: 10px;
   margin-bottom: 40px;
 }
- /* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #ff4d6d;
-  color: #fff;
-  margin-top: 40px;
-}
 /* ===== About Section ===== */
 .about {
   text-align: center;
@@ -838,6 +830,7 @@ transition:0.3s;
 background:white;
 color:#ff4d6d;
 }
+
 
 
 

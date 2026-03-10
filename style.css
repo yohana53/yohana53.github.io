@@ -155,11 +155,17 @@ border-radius:10px;
 }
 
 /* ===== WhatsApp Button ===== */
+/* ===== WhatsApp Button ===== */
 .btn whatsapp-btn {
-  background-color: #25D366;
+  background-color: #25D366; /* WhatsApp green */
+  color: #fff;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .btn whatsapp-btn:hover {
@@ -831,6 +837,7 @@ transition:0.3s;
 background:white;
 color:#ff4d6d;
 }
+
 
 
 

@@ -138,21 +138,33 @@ border-radius:10px;
 }
 
 
-/* ===== BUTTONS ===== */
-
-.btn{
-background:#ff4d6d;
-color:#fff;
-padding:10px 20px;
-border-radius:5px;
-text-decoration:none;
-font-weight:bold;
+/* ===== Buttons ===== */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff4d6d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
-.btn:hover{
-background:#e03c5f;
+.btn:hover {
+  background-color: #e03c5f;
 }
 
+/* ===== WhatsApp Button ===== */
+.whatsapp-btn {
+  background-color: #25D366;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebe5d;
+}
 
 /* ===== PRODUCTS ===== */
 
@@ -819,6 +831,7 @@ transition:0.3s;
 background:white;
 color:#ff4d6d;
 }
+
 
 
 

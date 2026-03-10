@@ -385,9 +385,11 @@ font-size:18px;
 /* FIXED FOOTER */
 
 .footer{
-background:linear-gradient(135deg,#111,#222);
+background: linear-gradient(135deg,#0f0f0f,#1c1c1c,#0f0f0f) !important;
 color:white;
-padding:50px 20px;
+padding:60px 20px;
+margin-top:60px;
+border-top:1px solid rgba(255,255,255,0.05);
 }
 
 .footer-container{
@@ -475,6 +477,7 @@ transition:0.3s;
 background:#25D366;
 transform:scale(1.1);
 }
+
 
 
 

@@ -385,8 +385,7 @@ font-size:18px;
 /* FIXED FOOTER */
 
 .footer{
-background:linear-gradient(135deg,#111,#222)
- !important;
+background:linear-gradient(135deg,#111,#222);
 color:white;
 padding:50px 20px;
 }
@@ -427,6 +426,15 @@ text-decoration:none;
 .footer-links a:hover{
 color:white;
 }
+.footer a{
+color:#ccc;
+text-decoration:none;
+}
+
+.footer a:hover{
+color:white;
+}
+
 
 .social-icons{
 display:flex;
@@ -454,6 +462,20 @@ border-top:1px solid #333;
 padding-top:15px;
 color:#aaa;
 }
+.social-icons a{
+font-size:18px;
+color:white;
+background:#333;
+padding:10px;
+border-radius:50%;
+transition:0.3s;
+}
+
+.social-icons a:hover{
+background:#25D366;
+transform:scale(1.1);
+}
+
 
 
 

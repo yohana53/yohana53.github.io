@@ -648,12 +648,12 @@ font-size:18px;
 /* FIXED FOOTER */
 
 .footer{
-background: linear-gradient(135deg,#0f0f0f,#1c1c1c,#0f0f0f) !important;
+background:linear-gradient(135deg,#ff4d6d,#ff758f);
 color:white;
 padding:60px 20px;
 margin-top:60px;
-border-top:1px solid rgba(255,255,255,0.05);
 }
+
 
 .footer-container{
 max-width:1200px;
@@ -740,6 +740,20 @@ transition:0.3s;
 background:#25D366;
 transform:scale(1.1);
 }
+.social-icons a{
+font-size:18px;
+color:white;
+background:rgba(255,255,255,0.2);
+padding:12px;
+border-radius:50%;
+transition:0.3s;
+}
+
+.social-icons a:hover{
+background:white;
+color:#ff4d6d;
+}
+
 
 
 

@@ -246,27 +246,27 @@ margin-top:40px;
 
 /* ===== FLOAT WHATSAPP ===== */
 
-/* Floating WhatsApp Button */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25D366;
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  z-index: 1000;
-  transition: background 0.3s, transform 0.2s;
+/* FIX WHATSAPP FLOAT BUTTON */
+
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+font-size:14px;
+font-weight:500;
+text-decoration:none;
+display:flex;
+align-items:center;
+gap:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
-.whatsapp-float i {
-  font-size: 10px;
+.whatsapp-float i{
+font-size:16px;
 }
 
 /* Hover effect */
@@ -453,6 +453,7 @@ border-top:1px solid #333;
 padding-top:15px;
 color:#aaa;
 }
+
 
 
 

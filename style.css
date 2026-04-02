@@ -104,12 +104,16 @@ padding:12px;
 }
 
 .sliding-banner {
+  position: fixed;       /* keeps it pinned */
+  top: 0;                /* at the very top */
+  left: 0;
   width: 100%;
   background: #f8f8f8;
   overflow: hidden;
   white-space: nowrap;
   border-bottom: 2px solid #ddd;
   padding: 10px 0;
+  z-index: 9999;         /* ensures it stays above other elements */
 }
 
 .sliding-banner span {

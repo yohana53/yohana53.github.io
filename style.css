@@ -103,7 +103,28 @@ padding:12px;
 
 }
 
+.sliding-banner {
+  width: 100%;
+  background-color: #f8f8f8; /* light background */
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border-bottom: 2px solid #ddd;
+}
 
+.sliding-banner p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: slideText 15s linear infinite;
+  font-size: 1.2em;
+  color: #333;
+  font-weight: bold;
+}
+
+@keyframes slideText {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
 /* ===== HERO ===== */
 
 .hero{

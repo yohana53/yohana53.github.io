@@ -254,6 +254,11 @@ font-size:14px;
 margin-bottom:8px;
 }
 
+/*shop page*/
+.banner {
+  color:#777;
+  text-align:center;
+}
 /* Carousel container */
 .carousel-container {
   margin: 40px 0;

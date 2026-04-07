@@ -260,6 +260,16 @@ margin-bottom:8px;
 ;
   text-align:center;
 }
+/* ===== Shop Section ===== */
+.shop {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.shop h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
 /* Carousel container */
 .carousel-container {
   margin: 40px 0;

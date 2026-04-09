@@ -1,32 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Shop Fashion | Yohana Fashion Tanzania</title>
-
   <meta name="description" content="Browse stylish jackets, dresses, sneakers and more at Yohana Fashion. Order directly via WhatsApp in Tanzania.">
-
   <meta name="keywords" content="buy clothes Tanzania, shop fashion Dar es Salaam, jackets Tanzania, dresses Tanzania, sneakers Tanzania">
-
   <meta name="author" content="Yohana Fashion">
-
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 
 <body>
 
 <header>
   <div class="logo">Yohana Fashion</div>
-
-  <div class="menu-toggle" id="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-
+  <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
   <nav id="navbar">
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -37,9 +26,11 @@
     </ul>
   </nav>
 </header>
+
 <div class="sliding-banner">
-  <span>This website is for presenting our collections. If you like our products,please reach out on WhatsApp.</span>
+  <span>This website is for presenting our collections. If you like our products, please reach out on WhatsApp.</span>
 </div>
+
 <!-- Banner -->
 <section class="banner">
   <h2>✨ New Products Available! ✨</h2>
@@ -52,78 +43,47 @@
   <div class="product-grid" id="product-grid"></div>
 </section>
 
-<script>
-const whatsappNumber = "255715029419";
-
-const products = [
-  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
-  { name: "Leather Bag", price: "$69.99", image: "images/product5.jpg" },
-  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" },
-  { name: "Stylish Jacket", price: "$49.99", image: "images/product1.jpg" },
-  { name: "Sneakers", price: "$59.99", image: "images/product2.jpg" },
-  { name: "Casual Dress", price: "$39.99", image: "images/product3.jpg" },
-  { name: "Summer Hat", price: "$19.99", image: "images/product4.jpg" },
-  { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" }
-];
-
-
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
   <i class="fab fa-whatsapp"></i> Chat on WhatsApp
 </a>
 
 <footer>
-  
   <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
-    </div>
 </footer>
 
-<!-- Mobile Menu -->
+<!-- Scripts -->
 <script>
-const menuToggle = document.getElementById('menu-toggle');
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('#navbar a');
+const products = [
+  { name: "Stylish Jacket", price: 49.99, image: "images/product1.jpg" },
+  { name: "Sneakers", price: 59.99, image: "images/product2.jpg" },
+  { name: "Casual Dress", price: 39.99, image: "images/product3.jpg" },
+  { name: "Summer Hat", price: 19.99, image: "images/product4.jpg" },
+  { name: "Leather Bag", price: 69.99, image: "images/product5.jpg" },
+  { name: "Sunglasses", price: 24.99, image: "images/product6.jpg" }
+];
 
-menuToggle.addEventListener('click', () => {
-  navbar.classList.toggle('active');
+const exchangeRate = 2600; // USD → Tanzanian Shilling approx
+const grid = document.getElementById("product-grid");
+
+products.forEach(product => {
+  const card = document.createElement("div");
+  card.classList.add("product");
+  const tshPrice = product.price * exchangeRate;
+  card.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>TSh ${tshPrice.toLocaleString()}</p>
+  `;
+  grid.appendChild(card);
 });
 
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navbar.classList.remove('active');
-  });
+const menuToggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
+menuToggle.addEventListener('click', () => { 
+  navbar.classList.toggle('active'); 
 });
 </script>
 
 </body>
 </html>
-
-
-

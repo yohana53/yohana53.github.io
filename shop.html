@@ -93,25 +93,6 @@ const products = [
   { name: "Sunglasses", price: "$24.99", image: "images/product6.jpg" }
 ];
 
-const grid = document.getElementById("product-grid");
-
-products.forEach(product => {
-  const card = document.createElement("div");
-  card.classList.add("product");
-
-  card.innerHTML = `
-    <img src="${product.image}" alt="${product.name}">
-    <h3>${product.name}</h3>
-    <p>${product.price}</p>
-    <a href="https://wa.me/${whatsappNumber}?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}"
-       class="btn whatsapp-btn" target="_blank">
-       <i class="fab fa-whatsapp"></i> Order via WhatsApp
-    </a>
-  `;
-
-  grid.appendChild(card);
-});
-</script>
 
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">

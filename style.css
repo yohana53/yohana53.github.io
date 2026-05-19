@@ -133,13 +133,15 @@ font-weight:bold;
   width: 100%;
   overflow: hidden;
   position: relative;
-  height: 300px; /* adjust height as needed */
+  height: 300px;
+  contain: layout style paint;
 }
 
 .image-banner .banner-track {
   display: flex;
-  width: calc(300px * 12); /* 6 images repeated twice */
+  width: calc(300px * 12);
   animation: slideBanner 30s linear infinite;
+  will-change: transform;
 }
 
 .image-banner img {
@@ -153,6 +155,15 @@ font-weight:bold;
 @keyframes slideBanner {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .image-banner .banner-track,
+  .sliding-banner span,
+  .whatsapp-float {
+    animation: none !important;
+  }
 }
 
 /* ===== HERO ===== */
@@ -282,12 +293,6 @@ font-size:14px;
 margin-bottom:8px;
 }
 
-/*shop page*/
-.banner {
-  Text-color:‎#ff4d6d‎
-;
-  text-align:center;
-}
 /* ===== Shop Section ===== */
 .shop {
   text-align: center;
@@ -298,6 +303,7 @@ margin-bottom:8px;
   font-size: 32px;
   margin-bottom: 30px;
 }
+
 /* Carousel container */
 .carousel-container {
   margin: 40px 0;
@@ -553,7 +559,9 @@ font-weight:600;
   align-items: center;
   gap: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  animation: pulse 2s infinite; /* add pulsing animation */
+  animation: pulse 2s infinite;
+  contain: layout style paint;
+  will-change: transform;
 }
 
 /* Pulse animation */
@@ -688,17 +696,3 @@ grid-template-columns:1fr;
 }
 
 }
-
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #ff4d6d;
-  color: #fff;
-  margin-top: 40px;
-}
-
-
-
-
-

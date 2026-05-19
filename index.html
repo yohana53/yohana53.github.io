@@ -18,6 +18,9 @@
 <meta property="og:url" content="https://yohana53.github.io">
 <meta property="og:image" content="https://yohana53.github.io/images/hero.jpg">
 
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="64x64" href="/images/favicon.png">
+
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -29,9 +32,6 @@
 <header>
 
 <div class="logo">Yohana Fashion</div>
-
- <link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="64x64" href="/images/favicon.png">
 
 <div class="menu-toggle" id="menu-toggle">
 <i class="fas fa-bars"></i>
@@ -83,12 +83,12 @@ View Collections
 <!-- Sliding Banner -->
 <section class="image-banner">
   <div class="banner-track">
-    <img src="images/pi1.jpg" alt="Banner 1">
-    <img src="images/pi2.jpg" alt="Banner 2">
-    <img src="images/pi3.jpg" alt="Banner 3">
-    <img src="images/pi4.jpg" alt="Banner 4">
-    <img src="images/pi5.jpg" alt="Banner 5">
-    <img src="images/pi6.jpg" alt="Banner 6">
+    <img src="images/pi1.jpg" alt="Banner 1" loading="lazy">
+    <img src="images/pi2.jpg" alt="Banner 2" loading="lazy">
+    <img src="images/pi3.jpg" alt="Banner 3" loading="lazy">
+    <img src="images/pi4.jpg" alt="Banner 4" loading="lazy">
+    <img src="images/pi5.jpg" alt="Banner 5" loading="lazy">
+    <img src="images/pi6.jpg" alt="Banner 6" loading="lazy">
   </div>
 </section>
 <!-- FEATURED PRODUCTS -->
@@ -101,7 +101,7 @@ View Collections
 
 <div class="product">
 
-<img src="images/jacket.jpg" alt="Stylish Jacket">
+<img src="images/jacket.jpg" alt="Stylish Jacket" loading="lazy">
 
 <h3>Stylish Jacket</h3>
 
@@ -113,7 +113,7 @@ View Collections
 
 <div class="product">
 
-<img src="images/sneaker.jpg" alt="Modern Sneakers">
+<img src="images/sneaker.jpg" alt="Modern Sneakers" loading="lazy">
 
 <h3>Sneakers</h3>
 
@@ -124,7 +124,7 @@ View Collections
 
 <div class="product">
 
-<img src="images/modernsneaker.jpg" alt="Modern Sneakers">
+<img src="images/modernsneaker.jpg" alt="Modern Sneakers" loading="lazy">
 
 <h3>Sneakers</h3>
 
@@ -132,11 +132,11 @@ View Collections
 </div>
 <div class="product">
 
-<img src="images/dress.jpg" alt="Casual Dress">
+<img src="images/dress.jpg" alt="Casual Dress" loading="lazy">
 
 <h3>Casual Dress</h3>
 
-<p class="price" data-price="10.99"></p
+<p class="price" data-price="10.99"></p>
 
 </div>
 
@@ -152,12 +152,12 @@ View Collections
 
 <div class="insta-grid">
 
-<img src="images/insta1.jpg" alt="Fashion style">
-<img src="images/insta2.jpg" alt="Fashion style">
-<img src="images/insta3.jpg" alt="Fashion style">
-<img src="images/insta4.jpg" alt="Fashion style">
-<img src="images/insta5.jpg" alt="Fashion style">
-<img src="images/insta6.jpg" alt="Fashion style">
+<img src="images/insta1.jpg" alt="Fashion style" loading="lazy">
+<img src="images/insta2.jpg" alt="Fashion style" loading="lazy">
+<img src="images/insta3.jpg" alt="Fashion style" loading="lazy">
+<img src="images/insta4.jpg" alt="Fashion style" loading="lazy">
+<img src="images/insta5.jpg" alt="Fashion style" loading="lazy">
+<img src="images/insta6.jpg" alt="Fashion style" loading="lazy">
 
 </div>
 
@@ -296,56 +296,7 @@ Shop clothes easily and order through WhatsApp.
 
 
 
-<script>
-
-const menuToggle = document.getElementById('menu-toggle');
-
-const navbar = document.getElementById('navbar');
-
-const navLinks = document.querySelectorAll('#navbar a');
-
-
-menuToggle.addEventListener('click', () => {
-navbar.classList.toggle('active');
-});
-
-
-navLinks.forEach(link => {
-link.addEventListener('click', () => {
-navbar.classList.remove('active');
-});
-});
-
-
-const exchangeRate = 2600; // USD → Tanzanian Shilling approx
-
-document.querySelectorAll(".price").forEach(price => {
-
-let usd = price.getAttribute("data-price");
-
-let tsh = usd * exchangeRate;
-
-price.innerText = "TSh " + tsh.toLocaleString();
-
-});
-
-</script>
+<script src="script.js" defer></script>
  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

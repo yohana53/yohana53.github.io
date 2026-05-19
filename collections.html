@@ -1,123 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Collections | Men, Women, Kids Fashion Tanzania</title>
-
-  <meta name="description" content="Explore our collections for men, women, kids, shoes and accessories at Yohana Fashion in Dar es Salaam.">
-
-  <meta name="keywords" content="men fashion Tanzania, women fashion Tanzania, kids clothes Tanzania, shoes Tanzania">
-
-  <meta name="author" content="Yohana Fashion">
-
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Collections — Yohana</title>
+  <meta name="description" content="Collections of curated items and projects">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
 </head>
-
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Yohana</a>
+      <nav class="site-nav" id="site-nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/collections.html">Collections</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
 
-<header>
-  <div class="logo">Yohana Fashion</div>
+  <main class="container">
+    <h1>Collections</h1>
+    <p>Curated sets of products and projects. Each collection groups work or items by theme.</p>
 
-  <div class="menu-toggle" id="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
+    <div class="grid">
+      <article class="product">
+        <div class="product-thumb">Collection 1</div>
+        <h3>Minimal Home</h3>
+        <p class="muted">A small selection of home goods with clean lines.</p>
+      </article>
+      <article class="product">
+        <div class="product-thumb">Collection 2</div>
+        <h3>Everyday Carry</h3>
+        <p class="muted">Tools and pieces designed for daily use.</p>
+      </article>
+      <article class="product">
+        <div class="product-thumb">Collection 3</div>
+        <h3>Limited Edition</h3>
+        <p class="muted">Special releases and collaborations.</p>
+      </article>
+    </div>
+  </main>
 
-  <nav id="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="collections.html">Collections</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
-<div class="sliding-banner">
-  <span>This website is for presenting our collections. If you like our products,please reach out on WhatsApp.</span>
-</div>
-<section class="collections">
-  <h1>Our Collections</h1>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Yohana. Built with care.</p>
+    </div>
+  </footer>
 
-  <div class="carousel-container">
-    <h2>Men</h2>
-    <div class="carousel" id="carousel-Men"></div>
-  </div>
-
-  <div class="carousel-container">
-    <h2>Women</h2>
-    <div class="carousel" id="carousel-Women"></div>
-  </div>
-
-  <div class="carousel-container">
-    <h2>Kids</h2>
-    <div class="carousel" id="carousel-Kids"></div>
-  </div>
-
-  <div class="carousel-container">
-    <h2>Shoes</h2>
-    <div class="carousel" id="carousel-Shoes"></div>
-  </div>
-
-  <div class="carousel-container">
-    <h2>Other</h2>
-    <div class="carousel" id="carousel-Other"></div>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
-</footer>
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
-  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-</a>
-  
-<script>
-const products = [
-  { name: "Men Jacket", price: 49.99, image: "images/men1.jpg", category: "Men" },
-  { name: "Men Shirt", price: 29.99, image: "images/men2.jpg", category: "Men" },
-  { name: "Women Dress", price: 39.99, image: "images/women1.jpg", category: "Women" },
-  { name: "Women Top", price: 24.99, image: "images/women2.jpg", category: "Women" },
-  { name: "Kids T-shirt", price: 19.99, image: "images/kids1.jpg", category: "Kids" },
-  { name: "Kids Shorts", price: 14.99, image: "images/kids2.jpg", category: "Kids" },
-  { name: "Sneakers", price: 59.99, image: "images/shoes1.jpg", category: "Shoes" },
-  { name: "Sandals", price: 34.99, image: "images/shoes2.jpg", category: "Shoes" },
-  { name: "Handbag", price: 49.99, image: "images/other1.jpg", category: "Other" },
-  { name: "Belt", price: 19.99, image: "images/other2.jpg", category: "Other" }
-];
-
-const exchangeRate = 2600; // USD → TSh approx
-
-function loadCarousel(category) {
-  const carousel = document.getElementById(`carousel-${category}`);
-  const filtered = products.filter(p => p.category === category);
-
-  filtered.forEach(product => {
-    const card = document.createElement("div");
-    card.classList.add("product");
-    const tshPrice = product.price * exchangeRate;
-    card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p>TSh ${tshPrice.toLocaleString()}</p>
-    `;
-    carousel.appendChild(card);
-  });
-}
-
-["Men","Women","Kids","Shoes","Other"].forEach(loadCarousel);
-
-const menuToggle = document.getElementById('menu-toggle');
-const navbar = document.getElementById('navbar');
-menuToggle.addEventListener('click', () => { 
-  navbar.classList.toggle('active'); 
-});
-</script>
-
-
+  <script src="/script.js"></script>
 </body>
 </html>

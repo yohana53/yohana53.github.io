@@ -1,32 +1,37 @@
-// ===== MOBILE MENU TOGGLE =====
-const menuToggle = document.getElementById('menu-toggle');
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('#navbar a');
+// Minimal JS: nav toggle, year injection, and contact form handling
+document.addEventListener('DOMContentLoaded',function(){
+  // year
+  var y = new Date().getFullYear();
+  var yearEls = document.querySelectorAll('#year');
+  yearEls.forEach(function(el){el.textContent = y});
 
-menuToggle.addEventListener('click', () => {
-  navbar.classList.toggle('active');
-});
+  // nav toggle
+  var btn = document.getElementById('nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if(btn && nav){
+    btn.addEventListener('click',function(){
+      var isHidden = nav.style.display === 'none' || getComputedStyle(nav).display === 'none';
+      nav.style.display = isHidden ? 'flex' : 'none';
+    });
+  }
 
-// Close menu when a link is clicked
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navbar.classList.remove('active');
-  });
-});
-
-// ===== CURRENCY CONVERSION =====
-const exchangeRate = 2600; // USD → Tanzanian Shilling
-
-// Cache DOM query and format prices once on page load
-const formatter = new Intl.NumberFormat('en-TZ', {
-  style: 'currency',
-  currency: 'TZS',
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0
-});
-
-document.querySelectorAll(".price").forEach(priceElement => {
-  const usd = parseFloat(priceElement.getAttribute("data-price"));
-  const tsh = Math.round(usd * exchangeRate);
-  priceElement.textContent = formatter.format(tsh);
+  // contact form
+  var form = document.getElementById('contact-form');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var status = document.getElementById('form-status');
+      var data = new FormData(form);
+      var name = data.get('name')||'';
+      var email = data.get('email')||'';
+      var message = data.get('message')||'';
+      if(!name || !email || !message){
+        status.textContent = 'Please complete all fields.';
+        return;
+      }
+      // For GitHub Pages without a backend, instruct user how to wire a form endpoint.
+      status.textContent = 'Message ready to send. To enable form submissions, connect a form service (Formspree, Netlify Forms) or provide a server endpoint.';
+      form.reset();
+    });
+  }
 });

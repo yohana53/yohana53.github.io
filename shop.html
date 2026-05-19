@@ -1,89 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop Fashion | Yohana Fashion Tanzania</title>
-  <meta name="description" content="Browse stylish jackets, dresses, sneakers and more at Yohana Fashion. Order directly via WhatsApp in Tanzania.">
-  <meta name="keywords" content="buy clothes Tanzania, shop fashion Dar es Salaam, jackets Tanzania, dresses Tanzania, sneakers Tanzania">
-  <meta name="author" content="Yohana Fashion">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Shop — Yohana</title>
+  <meta name="description" content="Shop — curated items by Yohana">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Yohana</a>
+      <nav class="site-nav" id="site-nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/collections.html">Collections</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
 
-<header>
-  <div class="logo">Yohana Fashion</div>
-  <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
-  <nav id="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="collections.html">Collections</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
+  <main class="container">
+    <h1>Shop</h1>
+    <p>Shop the collection. Prices and checkout can be integrated with your preferred platform (Shopify, Gumroad, etc.)</p>
 
-<div class="sliding-banner">
-  <span>This website is for presenting our collections. If you like our products, please reach out on WhatsApp.</span>
-</div>
+    <div class="grid">
+      <article class="product">
+        <div class="product-thumb">Product</div>
+        <h3>Simple Piece</h3>
+        <p class="muted">$29</p>
+        <p><a class="btn btn-ghost" href="#">View</a></p>
+      </article>
+      <article class="product">
+        <div class="product-thumb">Product</div>
+        <h3>Everyday Item</h3>
+        <p class="muted">$45</p>
+        <p><a class="btn btn-ghost" href="#">View</a></p>
+      </article>
+      <article class="product">
+        <div class="product-thumb">Product</div>
+        <h3>Limited Run</h3>
+        <p class="muted">$75</p>
+        <p><a class="btn btn-ghost" href="#">View</a></p>
+      </article>
+    </div>
+  </main>
 
-<!-- Banner -->
-<section class="banner">
-  <h2>✨ New Products Available! ✨</h2>
-  <p>Check out our latest arrivals and order directly via WhatsApp</p>
-</section>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Yohana. Built with care.</p>
+    </div>
+  </footer>
 
-<!-- Shop -->
-<section class="shop">
-  <h1>Shop Our Products</h1>
-  <div class="product-grid" id="product-grid"></div>
-</section>
-
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/255715029419" target="_blank" class="whatsapp-float">
-  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-</a>
-
-<footer>
-  <p>&copy; 2026 Yohana Fashion. All Rights Reserved.</p>
-</footer>
-
-<!-- Scripts -->
-<script>
-const products = [
-  { name: "Stylish Jacket", price: 49.99, image: "images/product1.jpg" },
-  { name: "Sneakers", price: 59.99, image: "images/product2.jpg" },
-  { name: "Casual Dress", price: 39.99, image: "images/product3.jpg" },
-  { name: "Summer Hat", price: 19.99, image: "images/product4.jpg" },
-  { name: "Leather Bag", price: 69.99, image: "images/product5.jpg" },
-  { name: "Sunglasses", price: 24.99, image: "images/product6.jpg" }
-];
-
-const exchangeRate = 2600; // USD → Tanzanian Shilling approx
-const grid = document.getElementById("product-grid");
-
-products.forEach(product => {
-  const card = document.createElement("div");
-  card.classList.add("product");
-  const tshPrice = product.price * exchangeRate;
-  card.innerHTML = `
-    <img src="${product.image}" alt="${product.name}">
-    <h3>${product.name}</h3>
-    <p>TSh ${tshPrice.toLocaleString()}</p>
-  `;
-  grid.appendChild(card);
-});
-
-const menuToggle = document.getElementById('menu-toggle');
-const navbar = document.getElementById('navbar');
-menuToggle.addEventListener('click', () => { 
-  navbar.classList.toggle('active'); 
-});
-</script>
-
+  <script src="/script.js"></script>
 </body>
 </html>
